@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kebijakan Privasi — Safe Keyboard</title>
+<style>
+  :root {
+    --ink: #16241f;
+    --ink-soft: #45564d;
+    --paper: #f6f4ee;
+    --paper-card: #ffffff;
+    --line: #d8dcd3;
+    --pine: #1f5f4a;
+    --pine-soft: #e7f0eb;
+    --amber: #b8712c;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding: 56px 24px 40px;
+    background: var(--paper-card);
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .eyebrow {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    color: var(--pine);
+    font-weight: 700;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .meta {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .shield-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    background: var(--pine-soft);
+    color: var(--pine);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  nav.toc {
+    margin: 40px 0 8px;
+    padding: 20px 22px;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  nav.toc p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+  }
+  nav.toc li { margin-bottom: 6px; break-inside: avoid; }
+  nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  nav.toc a:hover { color: var(--pine); border-color: var(--pine); }
+  section {
+    margin-top: 44px;
+    scroll-margin-top: 24px;
+  }
+  section h2 {
+    font-size: 21px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  section h2 .num {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--paper);
+    background: var(--pine);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  h3 {
+    font-size: 16px;
+    margin: 22px 0 8px;
+    color: var(--pine);
+  }
+  p { margin: 0 0 14px; color: var(--ink); }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ink); }
+  .not-collect {
+    background: var(--pine-soft);
+    border: 1px solid #c9ddd2;
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .not-collect p:first-child { margin-top: 0; }
+  .not-collect ul { margin-bottom: 0; }
+  .callout {
+    border-left: 3px solid var(--amber);
+    background: #faf3ea;
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14.5px;
+    color: #6b4520;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  .contact-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 28px 26px;
+    margin-top: 8px;
+  }
+  .contact-card h3 { color: #cfe8db; margin-top: 0; }
+  .contact-card a { color: #ffffff; font-weight: 600; }
+  .contact-card .role {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: #a9c2b6;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  a.back-top {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: var(--pine);
+  }
+  @media (max-width: 520px) {
+    nav.toc ol { columns: 1; }
+    header.hero { padding: 40px 20px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Dokumen Legal &middot; Safe Keyboard</p>
+    <h1>Kebijakan Privasi</h1>
+    <p class="meta">Versi 2.2.1 &middot; Berlaku efektif Agustus 2026</p>
+    <div class="shield-row">
+      <span class="pill">Deteksi kata dilakukan on-device</span>
+      <span class="pill">Ketikan tidak pernah dikirim ke server</span>
+      <span class="pill">Tunduk pada UU PDP No. 27/2022</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <p>Daftar Isi</p>
+    <ol>
+      <li><a href="#s1">Ruang Lingkup</a></li>
+      <li><a href="#s2">Cara Aplikasi Memproses Ketikan</a></li>
+      <li><a href="#s3">Data yang Kami Kumpulkan</a></li>
+      <li><a href="#s4">Data yang Tidak Kami Kumpulkan</a></li>
+      <li><a href="#s5">Retensi &amp; Penghapusan Data</a></li>
+      <li><a href="#s6">Dasar &amp; Tujuan Pemrosesan</a></li>
+      <li><a href="#s7">Hak Anda sebagai Subjek Data</a></li>
+      <li><a href="#s8">Keamanan Data</a></li>
+      <li><a href="#s9">Pengguna Anak</a></li>
+      <li><a href="#s10">Pihak Ketiga</a></li>
+      <li><a href="#s11">Perubahan Kebijakan</a></li>
+      <li><a href="#s12">Identitas Pengendali Data</a></li>
+      <li><a href="#s13">Hubungi Kami</a></li>
+    </ol>
+  </nav>
+
+  <section id="s1">
+    <h2><span class="num">1</span>Ruang Lingkup</h2>
+    <p>Kebijakan Privasi ini menjelaskan bagaimana <strong>Safe Keyboard</strong> ("Aplikasi") memperlakukan data Anda saat menggunakan aplikasi keyboard Android yang mendeteksi dan memblokir kata kasar, pornografi, dan judi online ("judol"), serta fitur berita dan pengelolaan langganan yang menyertainya. Kebijakan ini berlaku untuk seluruh pengguna Aplikasi dan merupakan satu kesatuan dengan Syarat &amp; Ketentuan Aplikasi.</p>
+  </section>
+
+  <section id="s2">
+    <h2><span class="num">2</span>Cara Aplikasi Memproses Ketikan</h2>
+    <p>Safe Keyboard berjalan sebagai <em>Input Method Editor</em> (IME) di perangkat Anda. Seluruh proses pencocokan kata terhadap kamus deteksi dan daftar kata kustom milik Anda dilakukan <strong>sepenuhnya secara lokal, di perangkat Anda</strong>. Tidak ada isi ketikan &mdash; termasuk pesan, kata sandi, maupun data lain yang Anda ketik &mdash; yang dikirim, diunggah, atau disimpan ke server kami dalam bentuk apa pun.</p>
+  </section>
+
+  <section id="s3">
+    <h2><span class="num">3</span>Data yang Kami Kumpulkan</h2>
+    <h3>Data Akun</h3>
+    <ul>
+      <li>Nama dan alamat email, untuk keperluan registrasi akun.</li>
+      <li>ID pengguna yang dibuat oleh sistem.</li>
+      <li>Status dan riwayat langganan (tier aktif, tanggal berakhir, histori transaksi).</li>
+    </ul>
+    <h3>Data Penggunaan (Anonim/Agregat)</h3>
+    <ul>
+      <li>Statistik penggunaan fitur, tanpa isi ketikan.</li>
+      <li>Informasi perangkat (tipe OS, versi Android).</li>
+      <li>Log crash dan error, untuk keperluan perbaikan Aplikasi.</li>
+    </ul>
+  </section>
+
+  <section id="s4">
+    <h2><span class="num">4</span>Data yang Tidak Kami Kumpulkan</h2>
+    <div class="not-collect">
+      <p>Untuk menjaga kepercayaan Anda, hal-hal berikut <strong>tidak pernah</strong> kami kumpulkan, kirim, atau simpan di server:</p>
+      <ul>
+        <li>Konten yang Anda ketikkan (pesan, catatan, dan sejenisnya).</li>
+        <li>Pesan pribadi atau isi komunikasi Anda dalam aplikasi lain.</li>
+        <li>Kata sandi atau data finansial Anda.</li>
+        <li>Lokasi perangkat Anda.</li>
+        <li>Daftar Kata Kustom yang Anda tambahkan &mdash; tersimpan dan diproses seluruhnya secara lokal di perangkat Anda, tidak disinkronkan ke server kami.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="s5">
+    <h2><span class="num">5</span>Retensi &amp; Penghapusan Data</h2>
+    <ul>
+      <li>Data akun Anda (nama, email, ID pengguna, status langganan, histori transaksi) disimpan selama akun Anda masih aktif digunakan.</li>
+      <li>Ketika Anda meminta penghapusan akun, seluruh data akun yang tersimpan di server kami dihapus secara <strong>permanen</strong> dan <strong>tidak dapat dipulihkan kembali</strong>.</li>
+      <li>Daftar Kata Kustom tersimpan lokal di perangkat Anda dan tidak terpengaruh oleh penghapusan akun; data tersebut hanya hilang jika Aplikasi di-uninstall atau datanya dibersihkan manual dari perangkat.</li>
+    </ul>
+    <div class="callout">Penghapusan akun bersifat final. Pertimbangkan keputusan ini dengan saksama sebelum mengajukan permintaan.</div>
+  </section>
+
+  <section id="s6">
+    <h2><span class="num">6</span>Dasar &amp; Tujuan Pemrosesan</h2>
+    <p>Kami memproses data Anda berdasarkan <strong>persetujuan eksplisit</strong> yang Anda berikan saat mendaftar dan menyetujui Syarat &amp; Ketentuan, untuk tujuan-tujuan berikut:</p>
+    <table>
+      <tr><th>Kategori Data</th><th>Tujuan Pemrosesan</th></tr>
+      <tr><td>Nama &amp; email</td><td>Registrasi akun dan komunikasi terkait layanan</td></tr>
+      <tr><td>Status langganan</td><td>Mengaktifkan fitur dan kuota sesuai tier yang dibeli</td></tr>
+      <tr><td>Statistik penggunaan &amp; crash log</td><td>Perbaikan bug dan peningkatan kualitas Aplikasi</td></tr>
+    </table>
+    <p>Anda dapat menarik persetujuan ini kapan saja dengan menghapus akun Anda, sebagaimana diatur pada Bagian 5.</p>
+  </section>
+
+  <section id="s7">
+    <h2><span class="num">7</span>Hak Anda sebagai Subjek Data</h2>
+    <p>Sesuai Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi, Anda berhak untuk:</p>
+    <ul>
+      <li><strong>Mengakses</strong> data pribadi yang kami simpan terkait akun Anda.</li>
+      <li><strong>Memperbaiki</strong> data yang tidak akurat atau sudah usang.</li>
+      <li><strong>Menghapus</strong> data pribadi Anda melalui penghapusan akun.</li>
+      <li><strong>Menarik persetujuan</strong> yang telah Anda berikan sebelumnya.</li>
+    </ul>
+    <p>Untuk menggunakan hak-hak ini, hubungi kami melalui kontak pada Bagian 13.</p>
+  </section>
+
+  <section id="s8">
+    <h2><span class="num">8</span>Keamanan Data</h2>
+    <ul>
+      <li>Enkripsi data saat transmisi menggunakan HTTPS/TLS.</li>
+      <li>Penyimpanan data akun pada server yang aman (Supabase).</li>
+      <li>Pembatasan akses data hanya untuk keperluan operasional yang sah.</li>
+      <li>Kami tidak menjual atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial.</li>
+    </ul>
+  </section>
+
+  <section id="s9">
+    <h2><span class="num">9</span>Pengguna Anak</h2>
+    <p>Safe Keyboard dirancang untuk membantu melindungi anak dari konten berbahaya, namun bukan pengganti pengawasan orang tua/wali. Kami tidak dengan sengaja mengumpulkan data pribadi dari pengguna berusia di bawah 13 tahun; jika Aplikasi digunakan oleh anak di bawah 13 tahun, pendaftaran akun wajib dilakukan oleh orang tua/wali. Fitur Berita yang membahas topik keamanan digital anak bersifat edukatif untuk orang tua/wali, bukan nasihat hukum, psikologis, maupun pengasuhan.</p>
+  </section>
+
+  <section id="s10">
+    <h2><span class="num">10</span>Pihak Ketiga</h2>
+    <p>Pembayaran langganan diproses melalui <strong>Google Play Billing</strong>; kami tidak menerima atau menyimpan data kartu pembayaran Anda. Data akun disimpan pada infrastruktur <strong>Supabase</strong> sebagai penyedia layanan server kami. Kedua pihak tersebut memiliki kebijakan privasi masing-masing yang berlaku atas data yang mereka proses.</p>
+  </section>
+
+  <section id="s11">
+    <h2><span class="num">11</span>Perubahan Kebijakan</h2>
+    <p>Kami dapat memperbarui Kebijakan Privasi ini sewaktu-waktu. Perubahan signifikan akan diberitahukan melalui notifikasi di dalam Aplikasi sebelum berlaku efektif. Penggunaan Aplikasi secara berkelanjutan setelah perubahan berlaku dianggap sebagai persetujuan Anda terhadap kebijakan yang telah diperbarui.</p>
+  </section>
+
+  <section id="s12">
+    <h2><span class="num">12</span>Identitas Pengendali Data</h2>
+    <p>Sesuai UU PDP No. 27 Tahun 2022, berikut identitas pihak yang bertindak sebagai Pengendali Data Pribadi untuk Aplikasi ini:</p>
+    <table>
+      <tr><th>Nama Penanggung Jawab</th><td>Ahmad Jaenal Aripin</td></tr>
+      <tr><th>Peran</th><td>Pengembang (Developer) sekaligus Pengendali Data Pribadi Aplikasi Safe Keyboard</td></tr>
+      <tr><th>Email Kontak</th><td>safedotdev@gmail.com</td></tr>
+    </table>
+  </section>
+
+  <section id="s13">
+    <h2><span class="num">13</span>Hubungi Kami</h2>
+    <div class="contact-card">
+      <p class="role">Pertanyaan, keluhan, atau permintaan hak atas data</p>
+      <h3>Ahmad Jaenal Aripin &mdash; Pengendali Data Pribadi Safe Keyboard</h3>
+      <p style="color:#dfe9e3; margin-bottom:0;">Email: <a href="mailto:safedotdev@gmail.com">safedotdev@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Safe Keyboard &middot; Kebijakan Privasi Versi 2.2.1 &middot; Terakhir diperbarui Agustus 2026</p>
+    <a class="back-top" href="#top">&uarr; Kembali ke atas</a>
+  </footer>
+
+</div>
+</body>
+</html>
