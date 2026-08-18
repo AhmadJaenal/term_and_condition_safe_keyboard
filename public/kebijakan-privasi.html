@@ -4,199 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kebijakan Privasi — Safe Keyboard</title>
-<style>
-  :root {
-    --ink: #16241f;
-    --ink-soft: #45564d;
-    --paper: #f6f4ee;
-    --paper-card: #ffffff;
-    --line: #d8dcd3;
-    --pine: #1f5f4a;
-    --pine-soft: #e7f0eb;
-    --amber: #b8712c;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    line-height: 1.7;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
-  header.hero {
-    border-bottom: 1px solid var(--line);
-    padding: 56px 24px 40px;
-    background: var(--paper-card);
-  }
-  .hero-inner { max-width: 760px; margin: 0 auto; }
-  .eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 12px;
-    color: var(--pine);
-    font-weight: 700;
-    margin: 0 0 14px;
-  }
-  h1 {
-    font-size: clamp(28px, 5vw, 40px);
-    margin: 0 0 10px;
-    letter-spacing: -0.01em;
-  }
-  .meta {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-  .shield-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 22px;
-    flex-wrap: wrap;
-  }
-  .pill {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 12.5px;
-    font-weight: 600;
-    background: var(--pine-soft);
-    color: var(--pine);
-    padding: 6px 12px;
-    border-radius: 999px;
-  }
-  nav.toc {
-    margin: 40px 0 8px;
-    padding: 20px 22px;
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-  }
-  nav.toc p {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 11px;
-    color: var(--ink-soft);
-    margin: 0 0 10px;
-    font-weight: 700;
-  }
-  nav.toc ol {
-    margin: 0;
-    padding-left: 20px;
-    columns: 2;
-    column-gap: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px;
-  }
-  nav.toc li { margin-bottom: 6px; break-inside: avoid; }
-  nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-  nav.toc a:hover { color: var(--pine); border-color: var(--pine); }
-  section {
-    margin-top: 44px;
-    scroll-margin-top: 24px;
-  }
-  section h2 {
-    font-size: 21px;
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin: 0 0 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-  }
-  section h2 .num {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--paper);
-    background: var(--pine);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  h3 {
-    font-size: 16px;
-    margin: 22px 0 8px;
-    color: var(--pine);
-  }
-  p { margin: 0 0 14px; color: var(--ink); }
-  ul { margin: 0 0 14px; padding-left: 22px; }
-  li { margin-bottom: 8px; }
-  strong { color: var(--ink); }
-  .not-collect {
-    background: var(--pine-soft);
-    border: 1px solid #c9ddd2;
-    border-radius: 6px;
-    padding: 18px 20px;
-  }
-  .not-collect p:first-child { margin-top: 0; }
-  .not-collect ul { margin-bottom: 0; }
-  .callout {
-    border-left: 3px solid var(--amber);
-    background: #faf3ea;
-    padding: 14px 18px;
-    border-radius: 0 4px 4px 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14.5px;
-    color: #6b4520;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px;
-    margin-bottom: 14px;
-  }
-  th, td {
-    text-align: left;
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--line);
-  }
-  th {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--ink-soft);
-  }
-  .contact-card {
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 6px;
-    padding: 28px 26px;
-    margin-top: 8px;
-  }
-  .contact-card h3 { color: #cfe8db; margin-top: 0; }
-  .contact-card a { color: #ffffff; font-weight: 600; }
-  .contact-card .role {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 13px;
-    color: #a9c2b6;
-  }
-  footer {
-    margin-top: 64px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    text-align: center;
-  }
-  a.back-top {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 12.5px;
-    color: var(--pine);
-  }
-  @media (max-width: 520px) {
-    nav.toc ol { columns: 1; }
-    header.hero { padding: 40px 20px 32px; }
-  }
-</style>
+<link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
@@ -204,7 +12,7 @@
   <div class="hero-inner">
     <p class="eyebrow">Dokumen Legal &middot; Safe Keyboard</p>
     <h1>Kebijakan Privasi</h1>
-    <p class="meta">Versi 2.2.1 &middot; Berlaku efektif Agustus 2026</p>
+    <p class="meta">Versi 1.0.0 &middot; Berlaku efektif Agustus 2026</p>
     <div class="shield-row">
       <span class="pill">Deteksi kata dilakukan on-device</span>
       <span class="pill">Ketikan tidak pernah dikirim ke server</span>
@@ -236,12 +44,12 @@
 
   <section id="s1">
     <h2><span class="num">1</span>Ruang Lingkup</h2>
-    <p>Kebijakan Privasi ini menjelaskan bagaimana <strong>Safe Keyboard</strong> ("Aplikasi") memperlakukan data Anda saat menggunakan aplikasi keyboard Android yang mendeteksi dan memblokir kata kasar, pornografi, dan judi online ("judol"), serta fitur berita dan pengelolaan langganan yang menyertainya. Kebijakan ini berlaku untuk seluruh pengguna Aplikasi dan merupakan satu kesatuan dengan Syarat &amp; Ketentuan Aplikasi.</p>
+    <p>Kebijakan Privasi ini menjelaskan bagaimana <strong>Safe Keyboard</strong> (Aplikasi) memperlakukan data Anda saat menggunakan aplikasi keyboard Android yang mendeteksi dan memblokir kata kasar, pornografi, dan judi online (judol), serta fitur berita dan pengelolaan langganan yang menyertainya. Kebijakan ini berlaku untuk seluruh pengguna Aplikasi dan merupakan satu kesatuan dengan Syarat &amp; Ketentuan Aplikasi.</p>
   </section>
 
   <section id="s2">
     <h2><span class="num">2</span>Cara Aplikasi Memproses Ketikan</h2>
-    <p>Safe Keyboard berjalan sebagai <em>Input Method Editor</em> (IME) di perangkat Anda. Seluruh proses pencocokan kata terhadap kamus deteksi dan daftar kata kustom milik Anda dilakukan <strong>sepenuhnya secara lokal, di perangkat Anda</strong>. Tidak ada isi ketikan &mdash; termasuk pesan, kata sandi, maupun data lain yang Anda ketik &mdash; yang dikirim, diunggah, atau disimpan ke server kami dalam bentuk apa pun.</p>
+    <p>Safe Keyboard berjalan sebagai <em>Input Method Editor</em> (IME) di perangkat Anda. Seluruh proses pencocokan kata terhadap kamus deteksi dan daftar kata kustom milik Anda dilakukan <strong>sepenuhnya secara lokal, di perangkat Anda</strong>. Tidak ada isi ketikan (termasuk pesan, kata sandi, maupun data lain yang Anda ketik) yang dikirim, diunggah, atau disimpan ke server kami dalam bentuk apa pun.</p>
   </section>
 
   <section id="s3">
@@ -269,7 +77,7 @@
         <li>Pesan pribadi atau isi komunikasi Anda dalam aplikasi lain.</li>
         <li>Kata sandi atau data finansial Anda.</li>
         <li>Lokasi perangkat Anda.</li>
-        <li>Daftar Kata Kustom yang Anda tambahkan &mdash; tersimpan dan diproses seluruhnya secara lokal di perangkat Anda, tidak disinkronkan ke server kami.</li>
+        <li>Daftar Kata Kustom yang Anda tambahkan (tersimpan dan diproses seluruhnya secara lokal di perangkat Anda, tidak disinkronkan ke server kami).</li>
       </ul>
     </div>
   </section>
@@ -353,7 +161,7 @@
   </section>
 
   <footer>
-    <p>Safe Keyboard &middot; Kebijakan Privasi Versi 2.2.1 &middot; Terakhir diperbarui Agustus 2026</p>
+    <p>Safe Keyboard &middot; Kebijakan Privasi Versi 1.0.0 &middot; Terakhir diperbarui Agustus 2026</p>
     <a class="back-top" href="#top">&uarr; Kembali ke atas</a>
   </footer>
 

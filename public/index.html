@@ -4,75 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dokumen Legal — Safe Keyboard</title>
-<style>
-  :root {
-    --ink: #16241f;
-    --ink-soft: #45564d;
-    --paper: #f6f4ee;
-    --paper-card: #ffffff;
-    --line: #d8dcd3;
-    --pine: #1f5f4a;
-    --pine-soft: #e7f0eb;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  }
-  .card {
-    max-width: 480px;
-    width: 100%;
-    padding: 44px 36px;
-    text-align: center;
-  }
-  .eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 12px;
-    color: var(--pine);
-    font-weight: 700;
-    margin: 0 0 14px;
-  }
-  h1 { font-size: 30px; margin: 0 0 10px; }
-  p.sub { color: var(--ink-soft); margin: 0 0 32px; font-size: 15px; }
-  .links { display: flex; flex-direction: column; gap: 12px; }
-  a.doc-link {
-    display: block;
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 18px 20px;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 16px;
-    font-weight: 600;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  a.doc-link:hover { border-color: var(--pine); background: var(--pine-soft); }
-  a.doc-link span {
-    display: block;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 12.5px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    margin-top: 4px;
-  }
-  footer {
-    margin-top: 36px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
-</style>
+<link rel="stylesheet" href="css/legal.css">
 </head>
-<body>
+<body class="landing">
   <div class="card">
     <p class="eyebrow">Safe Keyboard</p>
     <h1>Dokumen Legal</h1>
@@ -80,14 +14,13 @@
     <div class="links">
       <a class="doc-link" href="kebijakan-privasi.html">
         Kebijakan Privasi
-        <span>Wajib dicantumkan sebagai URL di Google Play Console</span>
       </a>
       <a class="doc-link" href="syarat-ketentuan.html">
         Syarat &amp; Ketentuan
         <span>Ketentuan penggunaan lengkap Aplikasi</span>
       </a>
     </div>
-    <footer>Versi 2.2.1 &middot; Terakhir diperbarui Agustus 2026</footer>
+    <footer>Versi 1.0.0 &middot; Terakhir diperbarui Agustus 2026</footer>
   </div>
 </body>
 </html>

@@ -4,120 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Syarat & Ketentuan — Safe Keyboard</title>
-<style>
-  :root {
-    --ink: #16241f;
-    --ink-soft: #45564d;
-    --paper: #f6f4ee;
-    --paper-card: #ffffff;
-    --line: #d8dcd3;
-    --pine: #1f5f4a;
-    --pine-soft: #e7f0eb;
-    --amber: #b8712c;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    line-height: 1.7;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
-  header.hero {
-    border-bottom: 1px solid var(--line);
-    padding: 56px 24px 40px;
-    background: var(--paper-card);
-  }
-  .hero-inner { max-width: 760px; margin: 0 auto; }
-  .eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 12px;
-    color: var(--pine);
-    font-weight: 700;
-    margin: 0 0 14px;
-  }
-  h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em; }
-  .meta { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; color: var(--ink-soft); }
-  .meta a { color: var(--pine); }
-  nav.toc {
-    margin: 40px 0 8px;
-    padding: 20px 22px;
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-  }
-  nav.toc p {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px;
-    color: var(--ink-soft); margin: 0 0 10px; font-weight: 700;
-  }
-  nav.toc ol {
-    margin: 0; padding-left: 20px; columns: 2; column-gap: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px;
-  }
-  nav.toc li { margin-bottom: 6px; break-inside: avoid; }
-  nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-  nav.toc a:hover { color: var(--pine); border-color: var(--pine); }
-  section { margin-top: 44px; scroll-margin-top: 24px; }
-  section h2 {
-    font-size: 21px; display: flex; align-items: baseline; gap: 12px;
-    margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
-  }
-  section h2 .num {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-weight: 700; font-size: 13px; color: var(--paper); background: var(--pine);
-    width: 26px; height: 26px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  h3 { font-size: 16px; margin: 22px 0 8px; color: var(--pine); }
-  p { margin: 0 0 14px; color: var(--ink); }
-  ul { margin: 0 0 14px; padding-left: 22px; }
-  li { margin-bottom: 8px; }
-  strong { color: var(--ink); }
-  table {
-    width: 100%; border-collapse: collapse;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px; margin: 4px 0 16px;
-  }
-  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
-  th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 700; background: var(--pine-soft); }
-  .tier-card {
-    border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; margin-bottom: 16px;
-    background: var(--paper-card);
-  }
-  .tier-card h3 { margin-top: 0; }
-  .tier-card table { margin-bottom: 10px; }
-  .callout {
-    border-left: 3px solid var(--amber); background: #faf3ea; padding: 14px 18px;
-    border-radius: 0 4px 4px 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14.5px; color: #6b4520;
-  }
-  .contact-card {
-    background: var(--ink); color: var(--paper); border-radius: 6px; padding: 28px 26px; margin-top: 8px;
-  }
-  .contact-card h3 { color: #cfe8db; margin-top: 0; }
-  .contact-card a { color: #ffffff; font-weight: 600; }
-  .contact-card .role { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; color: #a9c2b6; }
-  footer {
-    margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 12.5px; color: var(--ink-soft); text-align: center;
-  }
-  a.back-top { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--pine); }
-  em.closing {
-    display: block; margin-top: 48px; padding: 18px 20px;
-    background: var(--pine-soft); border-radius: 6px; font-style: italic;
-    font-size: 14.5px; color: var(--ink-soft);
-  }
-  @media (max-width: 520px) {
-    nav.toc ol { columns: 1; }
-    header.hero { padding: 40px 20px 32px; }
-  }
-</style>
+<link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
@@ -125,7 +12,7 @@
   <div class="hero-inner">
     <p class="eyebrow">Dokumen Legal &middot; Safe Keyboard</p>
     <h1>Syarat &amp; Ketentuan</h1>
-    <p class="meta">Versi 2.2.1 &middot; Terakhir diperbarui Agustus 2026 &middot; Lihat juga <a href="kebijakan-privasi.html">Kebijakan Privasi</a></p>
+    <p class="meta">Versi 1.0.0 &middot; Terakhir diperbarui Agustus 2026 &middot; Lihat juga <a href="kebijakan-privasi.html">Kebijakan Privasi</a></p>
   </div>
 </header>
 
@@ -154,8 +41,8 @@
 
   <section id="s1">
     <h2><span class="num">1</span>Pendahuluan</h2>
-    <p>Safe Keyboard ("Aplikasi") adalah aplikasi keyboard Android pintar yang dikembangkan untuk membantu pengguna &mdash; khususnya orang tua dan pengguna yang peduli terhadap keamanan digital &mdash; mendeteksi dan memblokir kata-kata kasar, bermuatan pornografi, dan berkaitan dengan judi online ("judol") secara otomatis saat mengetik, serta menyediakan informasi seputar keamanan digital melalui fitur berita.</p>
-    <p>Dengan mengunduh, memasang, mendaftar, dan/atau menggunakan Aplikasi ini, Anda ("Pengguna") menyatakan telah membaca, memahami, dan menyetujui secara sah dan mengikat seluruh Syarat &amp; Ketentuan ("S&amp;K") ini beserta Kebijakan Privasi yang menjadi satu kesatuan dengannya. Jika Anda tidak menyetujui S&amp;K ini, mohon untuk tidak menggunakan Aplikasi.</p>
+    <p>Safe Keyboard (Aplikasi) adalah aplikasi keyboard Android pintar yang dikembangkan untuk membantu pengguna (khususnya orang tua dan pengguna yang peduli terhadap keamanan digital) mendeteksi dan memblokir kata-kata kasar, bermuatan pornografi, dan berkaitan dengan judi online (judol) secara otomatis saat mengetik, serta menyediakan informasi seputar keamanan digital melalui fitur berita.</p>
+    <p>Dengan mengunduh, memasang, mendaftar, dan/atau menggunakan Aplikasi ini, Anda (Pengguna) menyatakan telah membaca, memahami, dan menyetujui secara sah dan mengikat seluruh Syarat &amp; Ketentuan (S&amp;K) ini beserta Kebijakan Privasi yang menjadi satu kesatuan dengannya. Jika Anda tidak menyetujui S&amp;K ini, mohon untuk tidak menggunakan Aplikasi.</p>
     <p>Apabila Pengguna adalah anak di bawah umur, penggunaan Aplikasi wajib dilakukan di bawah pengawasan dan persetujuan orang tua/wali yang sah, sebagaimana diatur lebih lanjut pada Bagian 9.</p>
   </section>
 
@@ -320,7 +207,7 @@
   <section id="s10">
     <h2><span class="num">10</span>Batasan Tanggung Jawab</h2>
     <ul>
-      <li>Aplikasi disediakan <strong>"sebagaimana adanya"</strong> tanpa jaminan apa pun.</li>
+      <li>Aplikasi disediakan <strong>sebagaimana adanya</strong> tanpa jaminan apa pun.</li>
       <li>Kami tidak menjamin deteksi sempurna terhadap seluruh kata berbahaya dalam segala variasi ejaan, singkatan, atau bahasa yang belum tercakup dalam Kamus Deteksi.</li>
       <li>Kami tidak bertanggung jawab atas kerugian akibat konten yang lolos dari deteksi atau kesalahan penggunaan Aplikasi oleh Pengguna.</li>
       <li>Konten Fitur Berita berasal dari sumber pihak ketiga dan/atau kurasi tim kami; kami tidak menjamin kebenaran atau kemutakhirannya secara mutlak.</li>
@@ -388,7 +275,7 @@
   <em class="closing">Dokumen ini merupakan bagian tidak terpisahkan dari Kebijakan Privasi Safe Keyboard. Dengan menekan tombol "Setuju &amp; Lanjutkan" pada Aplikasi, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh isi S&amp;K ini secara penuh dan tanpa syarat.</em>
 
   <footer>
-    <p>Safe Keyboard &middot; Syarat &amp; Ketentuan Versi 2.2.1 &middot; Terakhir diperbarui Agustus 2026</p>
+    <p>Safe Keyboard &middot; Syarat &amp; Ketentuan Versi 1.0.0 &middot; Terakhir diperbarui Agustus 2026</p>
     <a class="back-top" href="#top">&uarr; Kembali ke atas</a>
   </footer>
 

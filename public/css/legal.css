@@ -1,0 +1,263 @@
+:root {
+  --ink: #16241f;
+  --ink-soft: #45564d;
+  --paper: #f6f4ee;
+  --paper-card: #ffffff;
+  --line: #d8dcd3;
+  --pine: #1f5f4a;
+  --pine-soft: #e7f0eb;
+  --amber: #b8712c;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  line-height: 1.7;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
+
+/* ---------- Header / hero (kebijakan-privasi, syarat-ketentuan) ---------- */
+
+header.hero {
+  border-bottom: 1px solid var(--line);
+  padding: 56px 24px 40px;
+  background: var(--paper-card);
+}
+.hero-inner { max-width: 760px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  color: var(--pine);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em; }
+
+.meta {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.meta a { color: var(--pine); }
+
+.shield-row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.pill {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: var(--pine-soft);
+  color: var(--pine);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* ---------- Table of contents ---------- */
+
+nav.toc {
+  margin: 40px 0 8px;
+  padding: 20px 22px;
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+nav.toc p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+nav.toc ol {
+  margin: 0;
+  padding-left: 20px;
+  columns: 2;
+  column-gap: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+nav.toc li { margin-bottom: 6px; break-inside: avoid; }
+nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+nav.toc a:hover { color: var(--pine); border-color: var(--pine); }
+
+/* ---------- Sections ---------- */
+
+section { margin-top: 44px; scroll-margin-top: 24px; }
+section h2 {
+  font-size: 21px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+section h2 .num {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--paper);
+  background: var(--pine);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+h3 { font-size: 16px; margin: 22px 0 8px; color: var(--pine); }
+p { margin: 0 0 14px; color: var(--ink); }
+ul { margin: 0 0 14px; padding-left: 22px; }
+li { margin-bottom: 8px; }
+strong { color: var(--ink); }
+
+/* ---------- Callout boxes ---------- */
+
+.not-collect {
+  background: var(--pine-soft);
+  border: 1px solid #c9ddd2;
+  border-radius: 6px;
+  padding: 18px 20px;
+}
+.not-collect p:first-child { margin-top: 0; }
+.not-collect ul { margin-bottom: 0; }
+
+.callout {
+  border-left: 3px solid var(--amber);
+  background: #faf3ea;
+  padding: 14px 18px;
+  border-radius: 0 4px 4px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14.5px;
+  color: #6b4520;
+}
+
+/* ---------- Tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  margin: 4px 0 16px;
+}
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+/* Table header background used only on syarat-ketentuan.html tier tables */
+.tier-card th { background: var(--pine-soft); }
+
+/* ---------- Tier cards (syarat-ketentuan.html) ---------- */
+
+.tier-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  background: var(--paper-card);
+}
+.tier-card h3 { margin-top: 0; }
+.tier-card table { margin-bottom: 10px; }
+
+/* ---------- Contact card ---------- */
+
+.contact-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  padding: 28px 26px;
+  margin-top: 8px;
+}
+.contact-card h3 { color: #cfe8db; margin-top: 0; }
+.contact-card a { color: #ffffff; font-weight: 600; }
+.contact-card .role {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: #a9c2b6;
+}
+
+/* ---------- Closing note (syarat-ketentuan.html) ---------- */
+
+em.closing {
+  display: block;
+  margin-top: 48px;
+  padding: 18px 20px;
+  background: var(--pine-soft);
+  border-radius: 6px;
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+a.back-top { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--pine); }
+
+@media (max-width: 520px) {
+  nav.toc ol { columns: 1; }
+  header.hero { padding: 40px 20px 32px; }
+}
+
+/* =========================================================
+   index.html — halaman depan (landing page)
+   ========================================================= */
+
+body.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing .card { max-width: 480px; width: 100%; padding: 44px 36px; text-align: center; }
+.landing h1 { font-size: 30px; margin: 0 0 10px; }
+.landing p.sub { color: var(--ink-soft); margin: 0 0 32px; font-size: 15px; }
+.landing .links { display: flex; flex-direction: column; gap: 12px; }
+.landing a.doc-link {
+  display: block;
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.landing a.doc-link:hover { border-color: var(--pine); background: var(--pine-soft); }
+.landing a.doc-link span {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+.landing footer { margin-top: 36px; }
