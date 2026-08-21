@@ -56,4 +56,4 @@ Update di **ketiga tempat**, dengan urutan ini:
 - **Email kontak publik:** safedotdev@gmail.com (bukan email pribadi)
 
 ## Versi saat ini
-**2.2.1** — Agustus 2026
+**1.1.0** — Agustus 2026

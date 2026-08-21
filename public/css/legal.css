@@ -1,12 +1,25 @@
+/* =========================================================
+   Safe Keyboard — Dokumen Legal
+   Shared stylesheet for index.html, kebijakan-privasi.html,
+   dan syarat-ketentuan.html
+   Palet warna diselaraskan dengan colors.xml aplikasi Safe Keyboard
+   ========================================================= */
+
 :root {
-  --ink: #16241f;
-  --ink-soft: #45564d;
-  --paper: #f6f4ee;
+  --ink: #1A1A1A;          /* premium_text_primary */
+  --ink-soft: #6E7278;     /* premium_text_secondary */
+  --ink-muted: #9AA0A6;    /* premium_text_muted */
+  --paper: #FAF9FB;        /* onboarding_background */
   --paper-card: #ffffff;
-  --line: #d8dcd3;
-  --pine: #1f5f4a;
-  --pine-soft: #e7f0eb;
-  --amber: #b8712c;
+  --line: #ECECEE;         /* premium_card_border */
+  --divider: #EDEDEF;      /* premium_divider */
+  --pine: #4CAF50;         /* premium_accent_green */
+  --pine-soft: #E8F5E9;    /* tint lembut dari premium_accent_green */
+  --pine-light: #81C784;   /* premium_accent_green_light */
+  --amber: #F59E0B;        /* icon_amber */
+  --amber-soft: #FFFBEB;
+  --amber-text: #92400E;
+  --danger: #D90000;       /* red */
 }
 
 * { box-sizing: border-box; }
@@ -56,7 +69,7 @@ h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 10px; letter-spacing: -0.01e
   font-size: 12.5px;
   font-weight: 600;
   background: var(--pine-soft);
-  color: var(--pine);
+  color: #2E7D32;
   padding: 6px 12px;
   border-radius: 999px;
 }
@@ -107,7 +120,7 @@ section h2 .num {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   font-size: 13px;
-  color: var(--paper);
+  color: #ffffff;
   background: var(--pine);
   width: 26px;
   height: 26px;
@@ -118,7 +131,7 @@ section h2 .num {
   flex-shrink: 0;
 }
 
-h3 { font-size: 16px; margin: 22px 0 8px; color: var(--pine); }
+h3 { font-size: 16px; margin: 22px 0 8px; color: #2E7D32; }
 p { margin: 0 0 14px; color: var(--ink); }
 ul { margin: 0 0 14px; padding-left: 22px; }
 li { margin-bottom: 8px; }
@@ -128,7 +141,7 @@ strong { color: var(--ink); }
 
 .not-collect {
   background: var(--pine-soft);
-  border: 1px solid #c9ddd2;
+  border: 1px solid #C8E6C9;
   border-radius: 6px;
   padding: 18px 20px;
 }
@@ -137,12 +150,12 @@ strong { color: var(--ink); }
 
 .callout {
   border-left: 3px solid var(--amber);
-  background: #faf3ea;
+  background: var(--amber-soft);
   padding: 14px 18px;
   border-radius: 0 4px 4px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14.5px;
-  color: #6b4520;
+  color: var(--amber-text);
 }
 
 /* ---------- Tables ---------- */
@@ -162,7 +175,6 @@ th {
   color: var(--ink-soft);
   font-weight: 700;
 }
-/* Table header background used only on syarat-ketentuan.html tier tables */
 .tier-card th { background: var(--pine-soft); }
 
 /* ---------- Tier cards (syarat-ketentuan.html) ---------- */
@@ -180,18 +192,18 @@ th {
 /* ---------- Contact card ---------- */
 
 .contact-card {
-  background: var(--ink);
+  background: #161616; /* premium_button_container */
   color: var(--paper);
   border-radius: 6px;
   padding: 28px 26px;
   margin-top: 8px;
 }
-.contact-card h3 { color: #cfe8db; margin-top: 0; }
+.contact-card h3 { color: var(--pine-light); margin-top: 0; }
 .contact-card a { color: #ffffff; font-weight: 600; }
 .contact-card .role {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 13px;
-  color: #a9c2b6;
+  color: #B7C4B8;
 }
 
 /* ---------- Closing note (syarat-ketentuan.html) ---------- */
