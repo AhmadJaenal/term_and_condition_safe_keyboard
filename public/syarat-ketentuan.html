@@ -12,7 +12,7 @@
   <div class="hero-inner">
     <p class="eyebrow">Dokumen Legal &middot; Safe Keyboard</p>
     <h1>Syarat &amp; Ketentuan</h1>
-    <p class="meta">Versi 1.1.0 &middot; Terakhir diperbarui Agustus 2026 &middot; Lihat juga <a href="kebijakan-privasi.html">Kebijakan Privasi</a></p>
+    <p class="meta">Versi 1.6.0 &middot; Terakhir diperbarui Agustus 2026 &middot; Lihat juga <a href="kebijakan-privasi.html">Kebijakan Privasi</a></p>
   </div>
 </header>
 
@@ -143,7 +143,18 @@
       </ul>
       <p style="margin-bottom:0;">Paket Bahasa Daerah dapat dibeli sebagai tambahan (<em>add-on</em>) terlepas dari tier utama yang sedang aktif, kecuali dinyatakan lain dalam Aplikasi saat pembelian.</p>
     </div>
-  </section>
+
+    <div class="tier-card">
+      <h3>5.6 Paket Tambahan Kuota Kata Terlarang</h3>
+      <table>
+        <tr><th>Paket</th><th>Kuota</th><th>Harga</th></tr>
+        <tr><td>Starter</td><td>+50 kata</td><td>Rp 9.000</td></tr>
+        <tr><td>Medium</td><td>+150 kata</td><td>Rp 19.000</td></tr>
+        <tr><td>Large</td><td>+500 kata</td><td>Rp 49.000</td></tr>
+        <tr><td>Max</td><td>+1.000 kata</td><td>Rp 79.000</td></tr>
+      </table>
+      <p style="margin-bottom:0;">Paket ini bersifat <strong>pembelian sekali bayar</strong> (bukan langganan) yang menambah kuota Kata Terlarang (Kata Kustom) di luar batas kuota tier utama yang sedang aktif. Kuota tambahan ini <strong>bersifat permanen</strong> selama akun Pengguna masih aktif dan <strong>tidak hilang</strong> meski tier utama diturunkan atau langganannya berakhir. Paket ini dapat dibeli <strong>lebih dari satu kali</strong>, dan kuota dari setiap pembelian akan <strong>terakumulasi</strong> (menjumlah), bukan saling menggantikan.</p>
+    </div>
 
   <section id="s6">
     <h2><span class="num">6</span>Langganan dan Pembayaran</h2>
@@ -162,21 +173,23 @@
     <ul>
       <li>Nama dan alamat email untuk keperluan registrasi.</li>
       <li>ID pengguna yang dibuat oleh sistem.</li>
+      <li>Tanggal lahir, untuk keperluan verifikasi umur pengguna.</li>
     </ul>
     <h3>7.2 Data Penggunaan (Anonim/Agregat)</h3>
     <ul>
       <li>Statistik penggunaan fitur (tanpa isi ketikan).</li>
       <li>Informasi perangkat (tipe OS, versi Android).</li>
       <li>Log crash dan error untuk keperluan perbaikan Aplikasi.</li>
+      <li>Perkiraan lokasi negara/wilayah dari alamat IP (melalui Firebase Analytics, untuk statistik agregat) bukan lokasi presisi/GPS.</li>
     </ul>
     <h3>7.3 Data yang Tidak Kami Kumpulkan</h3>
     <ul>
       <li>Konten yang Anda ketikkan (pesan, catatan, dsb.).</li>
       <li>Pesan pribadi atau isi komunikasi Anda.</li>
       <li>Kata sandi atau data finansial Anda.</li>
-      <li>Lokasi perangkat Anda.</li>
+      <li>Lokasi presisi/GPS perangkat Anda.</li>
       <li>Daftar Kata Kustom yang Anda tambahkan seluruhnya tersimpan dan diproses secara lokal di perangkat Anda, tidak disinkronkan ke server kami.</li>
-      <li>PIN Keamanan yang Anda buat akan tersimpan terenkripsi/di-hash secara lokal di perangkat Anda (lihat Bagian 14).</li>
+      <li>PIN Keamanan yang Anda buat tersimpan terenkripsi/di-hash secara lokal di perangkat Anda (lihat Bagian 14).</li>
     </ul>
     <h3>7.4 Retensi dan Penghapusan Data</h3>
     <ul>
@@ -194,6 +207,7 @@
       <li>Penyimpanan data pada server yang aman (Supabase).</li>
       <li>Pembatasan akses data hanya untuk keperluan operasional yang sah.</li>
       <li>Tidak menjual atau membagikan data pribadi Anda kepada pihak ketiga untuk kepentingan komersial tanpa persetujuan Anda, kecuali diwajibkan hukum.</li>
+      <li>Aplikasi menggunakan Firebase Crashlytics, Firebase Analytics, dan Firebase Cloud Messaging (Google) untuk pelaporan crash otomatis, statistik penggunaan, dan pengiriman notifikasi; lihat Bagian 10 Kebijakan Privasi untuk rincian data yang diproses.</li>
     </ul>
   </section>
 
@@ -202,7 +216,8 @@
     <ul>
       <li>Fitur Berita menyajikan artikel terkait keamanan digital, termasuk topik sensitif seperti aktivitas anak di bawah umur dalam grup percakapan yang membahas konten dewasa. Konten ini disajikan untuk tujuan edukasi dan kewaspadaan, bukan untuk dikonsumsi anak tanpa pendampingan.</li>
       <li>Safe Keyboard dirancang membantu melindungi anak dari paparan konten berbahaya, namun <strong>bukan pengganti pengawasan orang tua/wali</strong>.</li>
-      <li>Kami tidak sengaja mengumpulkan data pribadi dari pengguna di bawah 13 tahun; pendaftaran akun anak di bawah 13 tahun wajib dilakukan oleh orang tua/wali.</li>
+      <li>Saat pendaftaran akun, Aplikasi meminta tanggal lahir Pengguna untuk memverifikasi usia. <strong>Pengguna berusia di bawah 13 tahun tidak dapat menyelesaikan proses pendaftaran akun</strong>; sistem akan menampilkan pemberitahuan bahwa pendaftaran untuk usia tersebut harus dilakukan oleh orang tua/wali menggunakan data mereka sendiri. Tidak ada data pribadi yang dikumpulkan dari percobaan pendaftaran yang gagal karena verifikasi usia ini.</li>
+      <li>Pengumpulan data statistik penggunaan, log crash, dan diagnostik hanya diaktifkan untuk akun yang berstatus aktif dan telah terverifikasi berusia 13 tahun ke atas (lihat Bagian 7.2 dan Bagian 10 Kebijakan Privasi).</li>
       <li>Orang tua/wali bertanggung jawab penuh atas pengaturan dan penggunaan Aplikasi oleh anak di bawah pengawasannya, termasuk pembuatan dan penyimpanan PIN Keamanan sebagaimana diatur pada Bagian 14.</li>
       <li>Jika Anda mengetahui anak di bawah 13 tahun mendaftar tanpa persetujuan orang tua, segera hubungi kami melalui kontak Bagian 16.</li>
     </ul>
@@ -262,13 +277,13 @@
     <h2><span class="num">14</span>PIN Keamanan (Kunci Orang Tua)</h2>
     <p>Aplikasi menyediakan fitur PIN Keamanan yang dapat dibuat sendiri oleh Pengguna (idealnya orang tua/wali) untuk mengunci akses ke pengaturan yang berdampak signifikan terhadap perlindungan Pengguna, meliputi:</p>
     <ul>
-      <li><strong>Level Filter</strong>:  tingkat kekerasan penyaringan kata dan konten.</li>
-      <li><strong>Kata Terlarang (Kata Kustom)</strong>:  daftar kata tambahan yang diblokir.</li>
-      <li><strong>Kamus Bahasa</strong>:  pengaturan bahasa daerah yang aktif.</li>
-      <li><strong>Pengaturan Keamanan</strong>:  termasuk proteksi agar Aplikasi tidak dapat dihapus (uninstall) tanpa otorisasi.</li>
-      <li><strong>Setel Ulang Keyboard</strong>:  mengembalikan pengaturan keyboard ke kondisi awal.</li>
-      <li><strong>Ubah Kata Sandi</strong>:  perubahan kata sandi akun Pengguna.</li>
-      <li><strong>Riwayat Berlangganan</strong>:  detail dan histori transaksi langganan.</li>
+      <li><strong>Level Filter</strong>: tingkat kekerasan penyaringan kata dan konten.</li>
+      <li><strong>Kata Terlarang (Kata Kustom)</strong>: daftar kata tambahan yang diblokir.</li>
+      <li><strong>Kamus Bahasa</strong>: pengaturan bahasa daerah yang aktif.</li>
+      <li><strong>Pengaturan Keamanan</strong>: termasuk proteksi agar Aplikasi tidak dapat dihapus (uninstall) tanpa otorisasi.</li>
+      <li><strong>Setel Ulang Keyboard</strong>: mengembalikan pengaturan keyboard ke kondisi awal.</li>
+      <li><strong>Ubah Kata Sandi</strong>: perubahan kata sandi akun Pengguna.</li>
+      <li><strong>Riwayat Berlangganan</strong>: detail dan histori transaksi langganan.</li>
     </ul>
     <p>Ketentuan penggunaan PIN Keamanan:</p>
     <ul>
@@ -287,7 +302,7 @@
       <tr><th>Email Kontak</th><td>safedotdev@gmail.com</td></tr>
     </table>
     <p style="margin-bottom:0;">Pengendali Data Pribadi bertanggung jawab menentukan tujuan dan cara pemrosesan Data Pribadi Pengguna, serta menjadi pihak yang dapat dihubungi terkait pelaksanaan hak-hak Pengguna atas data pribadi.</p>
-  </section>s
+  </section>
 
   <section id="s16">
     <h2><span class="num">16</span>Hubungi Kami</h2>
@@ -301,7 +316,7 @@
   <em class="closing">Dokumen ini merupakan bagian tidak terpisahkan dari Kebijakan Privasi Safe Keyboard. Dengan menekan tombol "Setuju &amp; Lanjutkan" pada Aplikasi, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh isi S&amp;K ini secara penuh dan tanpa syarat.</em>
 
   <footer>
-    <p>Safe Keyboard &middot; Syarat &amp; Ketentuan Versi 1.1.0 &middot; Terakhir diperbarui Agustus 2026</p>
+    <p>Safe Keyboard &middot; Syarat &amp; Ketentuan Versi 1.6.0 &middot; Terakhir diperbarui Agustus 2026</p>
     <a class="back-top" href="#top">&uarr; Kembali ke atas</a>
   </footer>
 

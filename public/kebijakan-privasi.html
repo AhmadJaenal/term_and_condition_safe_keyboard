@@ -12,7 +12,7 @@
   <div class="hero-inner">
     <p class="eyebrow">Dokumen Legal &middot; Safe Keyboard</p>
     <h1>Kebijakan Privasi</h1>
-    <p class="meta">Versi 1.1.0 &middot; Berlaku efektif Agustus 2026</p>
+    <p class="meta">Versi 1.6.0 &middot; Berlaku efektif Agustus 2026</p>
     <div class="shield-row">
       <span class="pill">Deteksi kata dilakukan on-device</span>
       <span class="pill">Ketikan tidak pernah dikirim ke server</span>
@@ -60,12 +60,14 @@
       <li>Nama dan alamat email, untuk keperluan registrasi akun.</li>
       <li>ID pengguna yang dibuat oleh sistem.</li>
       <li>Status dan riwayat langganan (tier aktif, tanggal berakhir, histori transaksi).</li>
+      <li>Tanggal lahir, untuk keperluan verifikasi umur pengguna.</li>
     </ul>
     <h3>Data Penggunaan (Anonim/Agregat)</h3>
     <ul>
       <li>Statistik penggunaan fitur, tanpa isi ketikan.</li>
       <li>Informasi perangkat (tipe OS, versi Android).</li>
-      <li>Log crash dan error, untuk keperluan perbaikan Aplikasi.</li>
+      <li>Log crash dan error, untuk keperluan perbaikan Aplikasi (dikumpulkan melalui Firebase Crashlytics, lihat Bagian 10).</li>
+      <li>Perkiraan lokasi negara/wilayah, diperoleh secara otomatis dari alamat IP melalui Firebase Analytics untuk keperluan statistik agregat <strong>bukan</strong> lokasi presisi/GPS, dan tidak digunakan untuk melacak pergerakan Anda.</li>
     </ul>
   </section>
 
@@ -77,7 +79,7 @@
         <li>Konten yang Anda ketikkan (pesan, catatan, dan sejenisnya).</li>
         <li>Pesan pribadi atau isi komunikasi Anda dalam aplikasi lain.</li>
         <li>Kata sandi atau data finansial Anda.</li>
-        <li>Lokasi perangkat Anda.</li>
+        <li>Lokasi presisi/GPS perangkat Anda.</li>
         <li>Daftar Kata Kustom yang Anda tambahkan (tersimpan dan diproses seluruhnya secara lokal di perangkat Anda, tidak disinkronkan ke server kami).</li>
         <li><strong>PIN Keamanan (Kunci Orang Tua)</strong> yang Anda buat tersimpan dalam bentuk terenkripsi/di-hash secara lokal di perangkat Anda, tidak pernah dikirim atau disimpan di server kami. Lihat Bagian 12 untuk penjelasan lengkap.</li>
       </ul>
@@ -130,12 +132,20 @@
 
   <section id="s9">
     <h2><span class="num">9</span>Pengguna Anak</h2>
-    <p>Safe Keyboard dirancang untuk membantu melindungi anak dari konten berbahaya, namun bukan pengganti pengawasan orang tua/wali. Kami tidak dengan sengaja mengumpulkan data pribadi dari pengguna berusia di bawah 13 tahun; jika Aplikasi digunakan oleh anak di bawah 13 tahun, pendaftaran akun wajib dilakukan oleh orang tua/wali. Fitur Berita yang membahas topik keamanan digital anak bersifat edukatif untuk orang tua/wali, bukan nasihat hukum, psikologis, maupun pengasuhan.</p>
+    <p>Safe Keyboard dirancang untuk membantu melindungi anak dari konten berbahaya, namun bukan pengganti pengawasan orang tua/wali.</p>
+    <p>Saat pendaftaran akun, Aplikasi meminta tanggal lahir Pengguna untuk memverifikasi usia. <strong>Pengguna yang berusia di bawah 13 tahun tidak dapat menyelesaikan proses pendaftaran akun</strong> sistem akan menampilkan pemberitahuan bahwa pendaftaran untuk usia tersebut harus dilakukan oleh orang tua/wali menggunakan data mereka sendiri. Tidak ada data pribadi yang dikumpulkan atau disimpan dari percobaan pendaftaran yang gagal karena verifikasi usia ini.</p>
+    <p>Pengumpulan data statistik penggunaan, log crash, dan diagnostik (melalui Firebase Analytics dan Firebase Crashlytics, lihat Bagian 10) hanya diaktifkan untuk akun yang berstatus aktif dan telah terverifikasi berusia 13 tahun ke atas. Akun yang belum terverifikasi tidak akan mengaktifkan pengumpulan data ini.</p>
+    <p>Fitur Berita yang membahas topik keamanan digital anak bersifat edukatif untuk orang tua/wali, bukan nasihat hukum, psikologis, maupun pengasuhan.</p>
   </section>
 
   <section id="s10">
     <h2><span class="num">10</span>Pihak Ketiga</h2>
-    <p>Pembayaran langganan diproses melalui <strong>Google Play Billing</strong>; kami tidak menerima atau menyimpan data kartu pembayaran Anda. Data akun disimpan pada infrastruktur <strong>Supabase</strong> sebagai penyedia layanan server kami. Kedua pihak tersebut memiliki kebijakan privasi masing-masing yang berlaku atas data yang mereka proses.</p>
+    <p>Pembayaran langganan diproses melalui <strong>Google Play Billing</strong>; kami tidak menerima atau menyimpan data kartu pembayaran Anda. Data akun disimpan pada infrastruktur <strong>Supabase</strong> sebagai penyedia layanan server kami.</p>
+    <p>Kami menggunakan <strong>Firebase Crashlytics</strong> (layanan dari Google) untuk mendeteksi dan melaporkan crash/error Aplikasi secara otomatis. Firebase Crashlytics dapat mengumpulkan Firebase Installation ID, model perangkat, versi sistem operasi, versi Aplikasi, dan detail teknis seputar crash (stack trace) data ini dikirim ke server Google, terpisah dari server kami.</p>
+    <p>Kami juga menggunakan <strong>Firebase Analytics</strong> (layanan dari Google) untuk memahami statistik penggunaan fitur secara anonim/agregat. Firebase Analytics dapat mengumpulkan identifier perangkat (App Instance ID), data interaksi dalam Aplikasi (fitur yang digunakan, durasi sesi), dan perkiraan lokasi negara/wilayah berdasarkan alamat IP.</p>
+    <p>Kami menggunakan <strong>Firebase Cloud Messaging (FCM)</strong> (layanan dari Google) untuk mengirim notifikasi push ke perangkat Anda, misalnya pemberitahuan pembaruan fitur atau informasi keamanan penting. FCM menggunakan token perangkat (bukan alamat email Anda) untuk mengirimkan notifikasi.</p>
+    <p>Baik Firebase Crashlytics, Firebase Analytics, maupun Firebase Cloud Messaging <strong>tidak</strong> mengumpulkan isi ketikan, Kata Kustom, atau PIN Keamanan Anda. Ketiga layanan ini bertindak sebagai penyedia layanan (data processor) bagi kami, bukan pihak ketiga independen yang menggunakan data Anda untuk kepentingan mereka sendiri.</p>
+    <p>Keempat pihak tersebut (Google Play Billing, Supabase, dan Firebase) memiliki kebijakan privasi masing-masing yang berlaku atas data yang mereka proses.</p>
   </section>
 
   <section id="s11">
@@ -148,7 +158,7 @@
     <p>Aplikasi menyediakan fitur PIN Keamanan yang dapat Anda buat sendiri untuk mengunci akses ke pengaturan sensitif, meliputi: Level Filter, Kata Terlarang (Kata Kustom), Kamus Bahasa, Pengaturan Keamanan (termasuk proteksi agar Aplikasi tidak dapat dihapus tanpa otorisasi), Setel Ulang Keyboard, Ubah Kata Sandi, dan Riwayat Berlangganan.</p>
     <ul>
       <li>PIN Keamanan disimpan dalam bentuk terenkripsi/di-hash <strong>secara lokal di perangkat Anda</strong> dan tidak pernah dikirim, diunggah, atau disimpan di server kami.</li>
-      <li>Jika Anda lupa PIN Keamanan, pemulihan hanya dapat dilakukan melalui verifikasi ulang akun (login dengan email dan kata sandi akun Anda), bukan dengan menyimpan PIN itu sendiri di server.</li>
+      <li>Jika Anda lupa PIN Keamanan, pemulihan hanya dapat dilakukan melalui verifikasi ulang akun (login dengan email dan kata sandi akun Anda) bukan dengan menyimpan PIN itu sendiri di server.</li>
       <li>Fitur "Pengaturan Keamanan" dapat meminta izin <em>Device Administrator</em> pada perangkat Android Anda untuk mencegah penghapusan (uninstall) Aplikasi tanpa otorisasi. Izin ini bersifat opsional, hanya aktif atas persetujuan eksplisit Anda, dan dapat dinonaktifkan kapan saja menggunakan PIN Keamanan yang sama.</li>
       <li>Anda bertanggung jawab penuh menjaga kerahasiaan PIN Keamanan milik Anda.</li>
     </ul>
@@ -174,7 +184,7 @@
   </section>
 
   <footer>
-    <p>Safe Keyboard &middot; Kebijakan Privasi Versi 1.1.0 &middot; Terakhir diperbarui Agustus 2026</p>
+    <p>Safe Keyboard &middot; Kebijakan Privasi Versi 1.6.0 &middot; Terakhir diperbarui Agustus 2026</p>
     <a class="back-top" href="#top">&uarr; Kembali ke atas</a>
   </footer>
 
