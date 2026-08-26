@@ -1,59 +1,79 @@
-# Safe Keyboard — Dokumen Legal
+# Safe Keyboard — Web
 
-Struktur project sederhana untuk mengelola Kebijakan Privasi dan Syarat & Ketentuan
-Safe Keyboard di tiga tempat sekaligus: aplikasi Android, halaman publik (untuk
-Play Console), dan sumber teks yang mudah dibaca/direview.
+Landing page + dokumen legal Safe Keyboard, di-deploy ke Firebase Hosting
+(project `safekeyboard-7bb17`).
+
+- **Landing page** dibangun dengan **Vite + React + Tailwind** (SPA), memakai
+  konsep komponen supaya tidak ada duplikasi markup.
+- **Dokumen legal** (Kebijakan Privasi, Syarat & Ketentuan, Hapus Akun) tetap
+  berupa **HTML statis** di `public/`, sehingga URL-nya **tidak berubah** dan
+  tetap sesuai yang terdaftar di Google Play Console.
 
 ```
 safe-keyboard-legal/
-├── README.md                          ← file ini
-├── public/                            ← DEPLOY folder ini ke hosting statis
-│   ├── index.html                     ← halaman depan, link ke 2 dokumen
-│   ├── kebijakan-privasi.html         ← wajib: URL ini didaftarkan di Play Console
-│   └── syarat-ketentuan.html          ← opsional: link tambahan di listing app
+├── index.html                  ← entry Vite (shell React)
+├── package.json / vite.config.js / tailwind.config.js
+├── firebase.json               ← hosting: { public: "dist" }
+├── src/
+│   ├── main.jsx / App.jsx      ← routing: "/" dan "/kontak"
+│   ├── config.js               ← URL Play Store, email, versi (EDIT DI SINI)
+│   ├── data/                   ← teks & harga (satu sumber, dipakai ulang)
+│   ├── components/             ← Navbar, Footer, Card, PriceCard, dll.
+│   ├── sections/               ← section landing page (Hero, Pricing, ...)
+│   └── pages/                  ← Home, Contact, NotFound
+├── public/                     ← disalin apa adanya ke dist/ oleh Vite
+│   ├── kebijakan-privasi.html  ← URL didaftarkan di Play Console
+│   ├── syarat-ketentuan.html
+│   ├── hapus-akun.html
+│   ├── css/legal.css           ← stylesheet dokumen legal
+│   ├── favicon.svg / og-image.svg / robots.txt / sitemap.xml
 ├── source/
-│   └── syarat-ketentuan-safe-keyboard.md   ← sumber teks lengkap, mudah direview
-└── app/
-    └── TermsAndConditionScreen.kt     ← salin ke project Android:
-                                          modules/legal/TermsAndConditionScreen.kt
+│   └── syarat-ketentuan-safe-keyboard.md   ← sumber teks S&K yang mudah direview
+└── dist/                       ← hasil build (di-.gitignore)
 ```
 
-## Cara pakai
+## Pengembangan
 
-### 1. Publikasikan folder `public/`
-Upload isi folder `public/` ke hosting statis gratis, contoh:
-- **GitHub Pages**: push folder ini ke repo, aktifkan Pages, arahkan ke folder `public/`.
-- **Firebase Hosting**: `firebase init hosting` → set public dir ke `public/` → `firebase deploy`.
-
-Setelah live, Anda akan punya URL seperti:
-```
-https://<domain-anda>/kebijakan-privasi.html
-https://<domain-anda>/syarat-ketentuan.html
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # menghasilkan dist/
+npm run preview    # cek hasil build
 ```
 
-### 2. Daftarkan ke Google Play Console
-- **App content → Privacy policy** → isi dengan URL `kebijakan-privasi.html`.
-- **Data Safety form** → isi berdasarkan Bagian 3–5 di `kebijakan-privasi.html`
-  (data yang dikumpulkan, tujuan, retensi).
+## Deploy
 
-### 3. Salin `app/TermsAndConditionScreen.kt` ke project Android
-Timpa file yang sama di `modules/legal/TermsAndConditionScreen.kt`.
+CI (`.github/workflows/`) menjalankan `npm ci && npm run build` lalu deploy
+otomatis saat push ke `master`. Manual:
+
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+## Yang perlu diedit setelah rilis
+
+| Hal | Lokasi |
+|---|---|
+| URL Play Store | `src/config.js` → `PLAY_STORE_URL` |
+| Video demo | `src/sections/VideoSection.jsx` → `<VideoEmbed youtubeId="..." />` |
+| Email kontak / versi | `src/config.js` |
+| Teks fitur / FAQ | `src/data/content.js` |
+| Harga & paket | `src/data/pricing.js` |
+
+Contact form memakai `mailto:` — membuka aplikasi email pengguna dengan pesan
+terisi ke alamat pada `CONTACT_EMAIL`. Tidak ada backend.
 
 ## Kalau isi kebijakan berubah (harga, fitur, dsb.)
 
-Update di **ketiga tempat**, dengan urutan ini:
+Update berurutan:
 
-1. `source/syarat-ketentuan-safe-keyboard.md` — edit di sini dulu, paling mudah dibaca.
-2. `app/TermsAndConditionScreen.kt` — salin isi yang sudah diedit ke `tcSections`.
-3. `public/kebijakan-privasi.html` dan `public/syarat-ketentuan.html` — salin bagian
-   yang relevan.
-4. Naikkan `TC_VERSION` di file `.kt` (mis. `"2.2.1"` → `"2.3.0"`) dan versi di
-   header ketiga file lainnya, supaya pengguna lama otomatis diminta re-consent.
-5. Deploy ulang folder `public/` ke hosting.
+1. `source/syarat-ketentuan-safe-keyboard.md` — edit di sini dulu.
+2. `public/kebijakan-privasi.html` & `public/syarat-ketentuan.html` — salin bagian relevan.
+3. `src/data/pricing.js` — kalau harga di landing page ikut berubah.
+4. Naikkan nomor versi di header ketiga file legal + `LEGAL_VERSION` di `src/config.js`.
+5. Deploy ulang.
 
 ## Kontak resmi di seluruh dokumen
-- **Nama Penanggung Jawab / Pengendali Data:** Ahmad Jaenal Aripin
-- **Email kontak publik:** safedotdev@gmail.com (bukan email pribadi)
-
-## Versi saat ini
-**1.1.0** — Agustus 2026
+- **Penanggung Jawab / Pengendali Data:** Ahmad Jaenal Aripin
+- **Email kontak publik:** safedotdev@gmail.com

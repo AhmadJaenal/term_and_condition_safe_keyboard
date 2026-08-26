@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://safekeyboard-7bb17.web.app/sitemap.xml

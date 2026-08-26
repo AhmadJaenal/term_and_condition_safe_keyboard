@@ -1,0 +1,36 @@
+import useDocumentTitle from '../hooks/useDocumentTitle.js'
+import Container from '../components/Container.jsx'
+import ValueStrip from '../components/ValueStrip.jsx'
+import { VALUE_PROPS } from '../data/content.js'
+import Hero from '../sections/Hero.jsx'
+import Risks from '../sections/Risks.jsx'
+import Features from '../sections/Features.jsx'
+import HowItWorks from '../sections/HowItWorks.jsx'
+import ProtectionControls from '../sections/ProtectionControls.jsx'
+import NewsFeature from '../sections/NewsFeature.jsx'
+import VideoSection from '../sections/VideoSection.jsx'
+import Pricing from '../sections/Pricing.jsx'
+import Faq from '../sections/Faq.jsx'
+import CtaBand from '../sections/CtaBand.jsx'
+
+export default function Home() {
+  useDocumentTitle('Safe Keyboard — Ketik Aman, Tanpa Kata Kasar')
+
+  return (
+    <>
+      <Hero />
+      <Container className="relative z-10 -mt-8 pb-4">
+        <ValueStrip items={VALUE_PROPS} />
+      </Container>
+      <Risks />
+      <Features />
+      <HowItWorks />
+      <ProtectionControls />
+      <NewsFeature />
+      <VideoSection />
+      <Pricing />
+      <Faq />
+      <CtaBand />
+    </>
+  )
+}

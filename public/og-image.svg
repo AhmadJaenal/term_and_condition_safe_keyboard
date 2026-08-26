@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EEF9F0"/>
+      <stop offset="1" stop-color="#D7F1DD"/>
+    </linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2FB457"/>
+      <stop offset="1" stop-color="#1B7C39"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(96 210)">
+    <g transform="scale(3.1)">
+      <path d="M24 3.5 8 9.2v12.3C8 32.4 14.6 41.6 24 44.5c9.4-2.9 16-12.1 16-23V9.2L24 3.5Z" fill="url(#s)"/>
+      <rect x="14.5" y="18.5" width="19" height="12.5" rx="2.6" fill="#fff"/>
+      <circle cx="34" cy="14" r="7" fill="#fff"/>
+      <path d="m30.7 14 2.2 2.2 4.3-4.6" fill="none" stroke="#1B7C39" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="330" y="286" font-family="Plus Jakarta Sans, Segoe UI, sans-serif" font-size="72" font-weight="800" fill="#1A1A1A">Safe Keyboard</text>
+  <text x="330" y="356" font-family="Plus Jakarta Sans, Segoe UI, sans-serif" font-size="34" font-weight="600" fill="#178A3E">Ketik Aman, Tanpa Kata Kasar</text>
+  <text x="330" y="410" font-family="Plus Jakarta Sans, Segoe UI, sans-serif" font-size="26" fill="#5B6169">Deteksi &amp; hapus kata kasar, pornografi, dan judi online dari ketikan.</text>
+  <text x="96" y="560" font-family="Plus Jakarta Sans, Segoe UI, sans-serif" font-size="24" font-weight="700" fill="#178A3E">Aman  ·  Privat  ·  Terjaga</text>
+</svg>

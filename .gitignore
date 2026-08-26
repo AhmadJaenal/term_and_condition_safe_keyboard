@@ -1,2 +1,7 @@
 firebase-debug.log
 *.log
+
+# Dependencies & build output
+node_modules/
+dist/
+.vite/
