@@ -1,5 +1,5 @@
 // ============================================================
-// Semua konten teks landing page — dipisah dari komponen
+// Semua teks landing page — dipisah dari komponen
 // ============================================================
 
 export const TRUST_PILLS = [
@@ -45,8 +45,8 @@ export const RISKS = [
   {
     icon: 'EyeOff',
     tone: 'amber',
-    title: 'Konten Dewasa',
-    desc: 'Istilah vulgar dan paparan konten tidak pantas yang tidak selalu terlihat.',
+    title: 'Kata Seksual',
+    desc: 'Istilah vulgar dan kata bermuatan dewasa yang tidak selalu tampak kasar.',
   },
   {
     icon: 'Globe',
@@ -68,7 +68,7 @@ export const FEATURES = [
     icon: 'ScanSearch',
     tone: 'brand',
     title: 'Deteksi Otomatis',
-    desc: 'Menyaring kata kasar, pornografi, dan link judi online secara real-time sebelum pesan terkirim.',
+    desc: 'Menyaring kata kasar, istilah pornografi, dan link judi online pada teks yang diketik, secara real-time sebelum pesan terkirim.',
   },
   {
     icon: 'Type',
@@ -148,7 +148,7 @@ export const PARENT_LOCKED = [
 export const NEWS_SAMPLES = [
   {
     tag: 'Keamanan Anak',
-    title: 'Anak di bawah umur membuat grup untuk membahas adegan dewasa',
+    title: 'Anak di bawah umur membuat grup untuk membahas hal-hal dewasa',
     desc: 'Contoh isu yang diangkat Fitur Berita agar orang tua mengenali pola percakapan berisiko sejak awal.',
   },
   {
@@ -185,8 +185,12 @@ export const FAQ = [
     a: 'Seluruh transaksi diproses melalui Google Play Billing dan kebijakan refund mengikuti ketentuan Google Play Store. Safe Keyboard tidak memproses refund secara langsung di luar mekanisme Google Play.',
   },
   {
+    q: 'Apakah Safe Keyboard bisa mendeteksi gambar atau video?',
+    a: 'Tidak. Safe Keyboard hanya bekerja pada teks yang diketik. Aplikasi mencocokkan kata yang Anda ketik dengan Kamus Deteksi dan Kata Kustom, lalu memblokirnya sebelum terkirim. Gambar, stiker, video, atau tautan yang isinya tidak berupa teks tidak dipindai.',
+  },
+  {
     q: 'Apakah Safe Keyboard bisa menggantikan pengawasan orang tua?',
-    a: 'Tidak. Aplikasi membantu mengurangi paparan konten berbahaya, tetapi bukan pengganti pengawasan orang tua/wali. Deteksi bergantung pada cakupan kamus dan tidak menjamin seluruh variasi ejaan atau bahasa akan tertangkap.',
+    a: 'Tidak. Aplikasi membantu mengurangi paparan kata berbahaya, tetapi bukan pengganti pengawasan orang tua/wali. Deteksi bergantung pada cakupan kamus dan tidak menjamin seluruh variasi ejaan atau bahasa akan tertangkap.',
   },
   {
     q: 'Bagaimana cara menghapus akun saya?',

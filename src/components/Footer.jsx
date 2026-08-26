@@ -60,8 +60,8 @@ export default function Footer() {
               <span className="text-lg font-extrabold tracking-tight text-ink">Safe Keyboard</span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Keyboard Android pintar yang mendeteksi dan menghapus kata kasar, konten pornografi,
-              dan link judi online langsung dari ketikan — sepenuhnya di perangkat Anda.
+              Keyboard Android pintar yang mendeteksi dan menghapus kata kasar, istilah pornografi,
+              dan link judi online dari teks yang diketik — sepenuhnya di perangkat Anda.
             </p>
             <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-700">
               <Lock className="h-4 w-4" />

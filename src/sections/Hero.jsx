@@ -2,8 +2,7 @@ import { Check } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Button from '../components/Button.jsx'
 import Badge from '../components/Badge.jsx'
-import PhoneMockup from '../components/PhoneMockup.jsx'
-import KeyboardMock from '../components/KeyboardMock.jsx'
+import HeroDevice from '../components/HeroDevice.jsx'
 import { Ring, Plus, DashedCurve, DotGrid } from '../components/Decor.jsx'
 import { TRUST_PILLS } from '../data/content.js'
 import { PLAY_STORE_URL } from '../config.js'
@@ -26,8 +25,8 @@ export default function Hero() {
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
-            Kata kasar, konten pornografi, dan link judi online bisa muncul dari chat, pencarian,
-            hingga kolom komentar. Safe Keyboard mendeteksi dan menghapusnya langsung dari ketikan —
+            Kata kasar, istilah pornografi, dan link judi online bisa muncul dari chat, pencarian,
+            hingga kolom komentar. Safe Keyboard mendeteksi dan menghapusnya dari teks yang diketik —
             sebelum pesan sempat terkirim.
           </p>
 
@@ -51,11 +50,11 @@ export default function Hero() {
         </div>
 
         <div className="relative flex justify-center lg:justify-end">
-          <Ring className="left-2 top-6 hidden sm:block" size={18} />
-          <Plus className="right-4 bottom-10 hidden sm:block" />
-          <PhoneMockup>
-            <KeyboardMock />
-          </PhoneMockup>
+          <Ring className="-left-2 top-6 hidden sm:block" size={18} />
+          <Plus className="-left-4 bottom-16 hidden sm:block" />
+          {/* Screenshot di public/screenshot-hero.png (set `framed` bila gambar
+              belum punya bingkai ponsel). Fallback ke ilustrasi bila file kosong. */}
+          <HeroDevice />
         </div>
       </Container>
     </section>
