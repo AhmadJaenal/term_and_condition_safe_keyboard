@@ -3,7 +3,7 @@
 // ============================================================
 
 export const TRUST_PILLS = [
-  'Deteksi kata dilakukan di perangkat',
+  'Deteksi kata dilakukan di perangkat (On-Device)',
   'Ketikan tidak pernah dikirim ke server',
   'Selaras dengan UU PDP No. 27/2022',
 ]
@@ -52,7 +52,7 @@ export const RISKS = [
     icon: 'Globe',
     tone: 'brand',
     title: 'Link Judi Online',
-    desc: 'Tautan mencurigakan dan berisiko penipuan yang menyusup lewat komentar.',
+    desc: 'Link atau kata yang mengarah ke situs judi online otomatis terdeteksi dan diblokir saat Anda mengetik.',
   },
   {
     icon: 'Fingerprint',
@@ -92,13 +92,13 @@ export const FEATURES = [
     icon: 'ShieldCheck',
     tone: 'brand',
     title: 'Privasi Lokal',
-    desc: 'Semua proses pencocokan kata dilakukan di perangkat Anda, bukan di server kami.',
+    desc: 'Semua proses deteksi kata dilakukan di perangkat Anda (On-Device), bukan di server kami.',
   },
   {
     icon: 'Newspaper',
     tone: 'blue',
     title: 'Fitur Berita',
-    desc: 'Kabar seputar keamanan digital anak dan gawai, supaya orang tua waspada lebih dini.',
+    desc: 'Kabar seputar keamanan digital anak dan gadget, supaya orang tua waspada lebih dini.',
   },
 ]
 
@@ -117,7 +117,7 @@ export const STEPS = [
   {
     no: '03',
     title: 'Blokir & Hapus',
-    desc: 'Kata berbahaya otomatis diblokir sebelum sempat terkirim.',
+    desc: 'Kata berbahaya otomatis diblokir dan terhapus sebelum sempat terkirim.',
   },
   {
     no: '04',
@@ -186,7 +186,7 @@ export const FAQ = [
   },
   {
     q: 'Apakah Safe Keyboard bisa mendeteksi gambar atau video?',
-    a: 'Tidak. Safe Keyboard hanya bekerja pada teks yang diketik. Aplikasi mencocokkan kata yang Anda ketik dengan Kamus Deteksi dan Kata Kustom, lalu memblokirnya sebelum terkirim. Gambar, stiker, video, atau tautan yang isinya tidak berupa teks tidak dipindai.',
+    a: 'Tidak. Safe Keyboard hanya bekerja pada teks yang diketik. Aplikasi mencocokkan kata yang Anda ketik dengan Kamus Deteksi dan Kata Kustom, lalu memblokirnya dan terhapus sebelum terkirim. Gambar, stiker, video, atau tautan yang isinya tidak berupa teks tidak dipindai.',
   },
   {
     q: 'Apakah Safe Keyboard bisa menggantikan pengawasan orang tua?',

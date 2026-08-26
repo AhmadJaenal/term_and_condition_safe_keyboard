@@ -26,8 +26,8 @@ export default function Hero() {
 
           <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
             Kata kasar, istilah pornografi, dan link judi online bisa muncul dari chat, pencarian,
-            hingga kolom komentar. Safe Keyboard mendeteksi dan menghapusnya dari teks yang diketik —
-            sebelum pesan sempat terkirim.
+            hingga kolom komentar. Safe Keyboard mendeteksi dan menghapusnya dari teks yang diketik
+            sebelum di proses pada pesan, pencarian atau lainya.
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -52,8 +52,6 @@ export default function Hero() {
         <div className="relative flex justify-center lg:justify-end">
           <Ring className="-left-2 top-6 hidden sm:block" size={18} />
           <Plus className="-left-4 bottom-16 hidden sm:block" />
-          {/* Screenshot di public/screenshot-hero.png (set `framed` bila gambar
-              belum punya bingkai ponsel). Fallback ke ilustrasi bila file kosong. */}
           <HeroDevice />
         </div>
       </Container>

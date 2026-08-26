@@ -14,7 +14,7 @@ export const LEGAL_VERSION = '1.6.0'
 export const COMPANY = {
   team: 'SafeDev Team',
   owner: 'Ahmad Jaenal Aripin',
-  role: 'Pengembang sekaligus Pengendali Data Pribadi Safe Keyboard',
+  role: 'Developer & Founder',
   year: 2026,
 }
 

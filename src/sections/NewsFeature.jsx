@@ -16,7 +16,7 @@ export default function NewsFeature() {
             Kenali risiko digital <span className="text-brand-600">sejak dini</span>
           </>
         }
-        desc="Fitur Berita menampilkan kabar seputar keamanan penggunaan gawai — seperti anak di bawah umur yang membuat grup untuk membahas hal-hal dewasa — agar orang tua bisa waspada lebih awal."
+        desc="Fitur Berita menampilkan kabar seputar keamanan penggunaan gadget (seperti anak di bawah umur yang membuat grup untuk membahas hal-hal dewasa) agar orang tua bisa waspada lebih awal."
       />
 
       <div className="mt-12 grid gap-5 lg:grid-cols-3">

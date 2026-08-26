@@ -2,17 +2,8 @@ import { useState } from 'react'
 import PhoneMockup from './PhoneMockup.jsx'
 import KeyboardMock from './KeyboardMock.jsx'
 
-// Menampilkan screenshot aplikasi di hero.
-//
-//  Taruh gambar Anda di:  public/screenshot-hero.png
-//  - Jika gambar sudah termasuk bingkai ponsel (device mockup), biarkan
-//    `framed={false}` (default) — gambar ditampilkan apa adanya + bayangan.
-//  - Jika gambar berupa screenshot polos (tanpa bingkai), set `framed`
-//    supaya dibungkus bingkai ponsel CSS.
-//  - Jika file belum ada / gagal dimuat, otomatis memakai ilustrasi
-//    <KeyboardMock /> sebagai cadangan.
 export default function HeroDevice({
-  src = '/screenshot-hero.png',
+  src = '/screenshot-hero.svg',
   alt = 'Safe Keyboard menghapus kata tidak baik saat mengetik',
   framed = false,
 }) {

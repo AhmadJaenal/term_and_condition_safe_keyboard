@@ -1,7 +1,5 @@
 import Badge from './Badge.jsx'
 
-// Judul section dengan eyebrow opsional. `title` boleh berupa string atau
-// node JSX (mis. sebagian kata dibungkus <span className="text-brand-600">).
 export default function SectionHeading({
   eyebrow,
   eyebrowIcon = 'Sparkles',
