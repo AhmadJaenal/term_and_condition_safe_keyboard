@@ -49,4 +49,18 @@ export const APP_SCREENS = [
       'Getaran tombol & tema aplikasi',
     ],
   },
+  {
+    id: 'mode-orang-tua',
+    icon: 'Lock',
+    tab: 'Mode Orang Tua',
+    title: 'Pengaturan penting dikunci PIN',
+    caption:
+      'Level filter, kata terlarang, kamus bahasa, dan setelan keamanan hanya bisa diakses dengan PIN yang dibuat orang tua. PIN disimpan terenkripsi di perangkat.',
+    src: '/images/screen-mode-orang-tua.webp',
+    points: [
+      'PIN 6 digit dibuat sendiri oleh orang tua',
+      'Pemulihan lewat verifikasi ulang akun',
+      'Perlindungan tetap aktif meski terkunci',
+    ],
+  },
 ]

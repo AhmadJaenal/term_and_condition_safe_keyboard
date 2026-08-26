@@ -1,235 +1,455 @@
 /* =========================================================
    Safe Keyboard — Dokumen Legal
-   Shared stylesheet for index.html, kebijakan-privasi.html,
-   dan syarat-ketentuan.html
-   Palet warna diselaraskan dengan colors.xml aplikasi Safe Keyboard
+   Stylesheet bersama untuk kebijakan-privasi.html,
+   syarat-ketentuan.html, dan hapus-akun.html.
+   Diselaraskan dengan desain landing page (Plus Jakarta Sans,
+   palet hijau brand, kartu putih membulat).
    ========================================================= */
 
 :root {
-  --ink: #1A1A1A;          /* premium_text_primary */
-  --ink-soft: #6E7278;     /* premium_text_secondary */
-  --ink-muted: #9AA0A6;    /* premium_text_muted */
-  --paper: #FAF9FB;        /* onboarding_background */
+  --ink: #1a1a1a;
+  --ink-soft: #5b6169;
+  --ink-muted: #8a9099;
+
+  --paper: #f3f5f2;
   --paper-card: #ffffff;
-  --line: #ECECEE;         /* premium_card_border */
-  --divider: #EDEDEF;      /* premium_divider */
-  --pine: #4CAF50;         /* premium_accent_green */
-  --pine-soft: #E8F5E9;    /* tint lembut dari premium_accent_green */
-  --pine-light: #81C784;   /* premium_accent_green_light */
-  --amber: #F59E0B;        /* icon_amber */
-  --amber-soft: #FFFBEB;
-  --amber-text: #92400E;
-  --danger: #D90000;       /* red */
+  --line: #e9e9ea;
+
+  --brand-50: #eef9f0;
+  --brand-100: #d7f1dd;
+  --brand-300: #7fd097;
+  --brand-500: #22a24c;
+  --brand-600: #178a3e;
+  --brand-700: #116c31;
+
+  /* alias lama, dipakai oleh style inline di beberapa halaman */
+  --pine: var(--brand-500);
+  --pine-soft: var(--brand-50);
+  --pine-light: var(--brand-300);
+
+  --amber: #f59e0b;
+  --amber-soft: #fffbeb;
+  --amber-text: #92400e;
+  --danger: #e23636;
+
+  --shadow-card: 0 4px 24px rgba(16, 32, 20, 0.06);
+  --radius: 20px;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  line-height: 1.7;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
 }
 
-.wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
+::selection {
+  background: var(--brand-100);
+  color: var(--brand-700);
+}
 
-/* ---------- Header / hero (kebijakan-privasi, syarat-ketentuan) ---------- */
+a {
+  color: var(--brand-600);
+}
+
+/* ---------- Navigasi dokumen (menyambungkan seluruh halaman) ---------- */
+
+.doc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  padding: 12px 24px;
+  background: rgba(243, 245, 242, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.doc-nav-brand img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.doc-nav-links {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.doc-nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.doc-nav-links a:hover {
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+.doc-nav-links a[aria-current="page"] {
+  background: var(--brand-500);
+  color: #ffffff;
+}
+
+/* ---------- Header ---------- */
 
 header.hero {
+  padding: 52px 24px 36px;
+  background: linear-gradient(to bottom, var(--brand-50), var(--paper));
   border-bottom: 1px solid var(--line);
-  padding: 56px 24px 40px;
-  background: var(--paper-card);
 }
-.hero-inner { max-width: 760px; margin: 0 auto; }
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
 
-/* Link kembali ke landing page */
 .home-link {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--pine);
+  color: var(--brand-600);
   text-decoration: none;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-.home-link:hover { text-decoration: underline; }
+.home-link:hover {
+  text-decoration: underline;
+}
 
 .eyebrow {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 16px;
+  padding: 5px 12px 5px 10px;
+  background: var(--brand-50);
+  color: var(--brand-700);
+  border-radius: 999px;
   font-size: 12px;
-  color: var(--pine);
   font-weight: 700;
-  margin: 0 0 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--brand-500);
 }
 
-h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em; }
+h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
 
 .meta {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink-soft);
 }
-.meta a { color: var(--pine); }
+.meta a {
+  color: var(--brand-600);
+  font-weight: 600;
+}
 
-.shield-row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.shield-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
 .pill {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: inline-flex;
+  align-items: center;
   font-size: 12.5px;
   font-weight: 600;
-  background: var(--pine-soft);
-  color: #2E7D32;
-  padding: 6px 12px;
+  background: var(--paper-card);
+  color: var(--brand-700);
+  border: 1px solid var(--brand-100);
+  padding: 6px 13px;
   border-radius: 999px;
 }
 
-/* ---------- Table of contents ---------- */
+/* ---------- Kolom isi ---------- */
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+/* ---------- Daftar isi ---------- */
 
 nav.toc {
   margin: 40px 0 8px;
-  padding: 20px 22px;
+  padding: 22px 24px;
   background: var(--paper-card);
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
 }
 nav.toc p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 11px;
-  color: var(--ink-soft);
-  margin: 0 0 10px;
-  font-weight: 700;
+  color: var(--ink-muted);
+  margin: 0 0 12px;
+  font-weight: 800;
 }
 nav.toc ol {
   margin: 0;
   padding-left: 20px;
   columns: 2;
-  column-gap: 24px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  column-gap: 28px;
   font-size: 14px;
 }
-nav.toc li { margin-bottom: 6px; break-inside: avoid; }
-nav.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-nav.toc a:hover { color: var(--pine); border-color: var(--pine); }
+nav.toc li {
+  margin-bottom: 7px;
+  break-inside: avoid;
+}
+nav.toc a {
+  color: var(--ink);
+  text-decoration: none;
+}
+nav.toc a:hover {
+  color: var(--brand-700);
+  text-decoration: underline;
+}
 
-/* ---------- Sections ---------- */
+/* ---------- Section ---------- */
 
-section { margin-top: 44px; scroll-margin-top: 24px; }
+section {
+  margin-top: 44px;
+  scroll-margin-top: 88px;
+}
 section h2 {
   font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   margin: 0 0 16px;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
 }
 section h2 .num {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: #ffffff;
-  background: var(--pine);
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+  background: var(--brand-500);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-h3 { font-size: 16px; margin: 22px 0 8px; color: #2E7D32; }
-p { margin: 0 0 14px; color: var(--ink); }
-ul { margin: 0 0 14px; padding-left: 22px; }
-li { margin-bottom: 8px; }
-strong { color: var(--ink); }
+h3 {
+  font-size: 15.5px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  color: var(--brand-700);
+}
+p {
+  margin: 0 0 14px;
+}
+ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+li {
+  margin-bottom: 8px;
+}
+li::marker {
+  color: var(--brand-500);
+}
+strong {
+  color: var(--ink);
+  font-weight: 700;
+}
 
-/* ---------- Callout boxes ---------- */
+/* ---------- Kotak sorotan ---------- */
 
 .not-collect {
-  background: var(--pine-soft);
-  border: 1px solid #C8E6C9;
-  border-radius: 6px;
-  padding: 18px 20px;
+  background: var(--brand-50);
+  border: 1px solid var(--brand-100);
+  border-radius: 16px;
+  padding: 20px 22px;
 }
-.not-collect p:first-child { margin-top: 0; }
-.not-collect ul { margin-bottom: 0; }
+.not-collect p:first-child {
+  margin-top: 0;
+}
+.not-collect ul {
+  margin-bottom: 0;
+}
 
 .callout {
   border-left: 3px solid var(--amber);
   background: var(--amber-soft);
-  padding: 14px 18px;
-  border-radius: 0 4px 4px 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 14.5px;
+  padding: 15px 18px;
+  border-radius: 0 12px 12px 0;
+  font-size: 14px;
   color: var(--amber-text);
 }
 
-/* ---------- Tables ---------- */
+/* ---------- Tabel ---------- */
 
 table {
   width: 100%;
   border-collapse: collapse;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
-  margin: 4px 0 16px;
+  margin: 6px 0 16px;
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
 }
-th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th,
+td {
+  text-align: left;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+tr:last-child th,
+tr:last-child td {
+  border-bottom: 0;
+}
 th {
-  font-size: 12px;
+  font-size: 11.5px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: var(--ink-soft);
-  font-weight: 700;
+  font-weight: 800;
+  background: var(--brand-50);
 }
-.tier-card th { background: var(--pine-soft); }
 
-/* ---------- Tier cards (syarat-ketentuan.html) ---------- */
+/* ---------- Kartu tier (syarat-ketentuan) ---------- */
 
 .tier-card {
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 18px 20px;
+  border-radius: var(--radius);
+  padding: 20px 22px;
   margin-bottom: 16px;
   background: var(--paper-card);
+  box-shadow: var(--shadow-card);
 }
-.tier-card h3 { margin-top: 0; }
-.tier-card table { margin-bottom: 10px; }
+.tier-card h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: var(--ink);
+}
+.tier-card table {
+  margin-bottom: 12px;
+}
 
-/* ---------- Contact card ---------- */
+/* ---------- Langkah bernomor (hapus-akun) ---------- */
+
+ol.steps {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step;
+  margin: 0 0 14px;
+}
+ol.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 46px;
+  margin-bottom: 18px;
+}
+ol.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--brand-500);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.retain-table td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ---------- Kartu kontak ---------- */
 
 .contact-card {
-  background: #161616; /* premium_button_container */
-  color: var(--paper);
-  border-radius: 6px;
-  padding: 28px 26px;
-  margin-top: 8px;
+  background: #161616;
+  color: #e7ece8;
+  border-radius: var(--radius);
+  padding: 26px 26px;
+  margin-top: 10px;
 }
-.contact-card h3 { color: var(--pine-light); margin-top: 0; }
-.contact-card a { color: #ffffff; font-weight: 600; }
+.contact-card h3 {
+  color: var(--brand-300);
+  margin-top: 0;
+}
+.contact-card a {
+  color: #ffffff;
+  font-weight: 700;
+}
 .contact-card .role {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 13px;
-  color: #B7C4B8;
+  color: #a9b7ac;
 }
 
-/* ---------- Closing note (syarat-ketentuan.html) ---------- */
+/* ---------- Catatan penutup (syarat-ketentuan) ---------- */
 
 em.closing {
   display: block;
   margin-top: 48px;
-  padding: 18px 20px;
-  background: var(--pine-soft);
-  border-radius: 6px;
+  padding: 20px 22px;
+  background: var(--brand-50);
+  border: 1px solid var(--brand-100);
+  border-radius: 16px;
   font-style: italic;
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--ink-soft);
 }
 
@@ -237,53 +457,43 @@ em.closing {
 
 footer {
   margin-top: 64px;
-  padding-top: 24px;
+  padding-top: 26px;
   border-top: 1px solid var(--line);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 12.5px;
   color: var(--ink-soft);
   text-align: center;
 }
-a.back-top { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--pine); }
-
-@media (max-width: 520px) {
-  nav.toc ol { columns: 1; }
-  header.hero { padding: 40px 20px 32px; }
-}
-
-/* =========================================================
-   index.html — halaman depan (landing page)
-   ========================================================= */
-
-body.landing {
-  min-height: 100vh;
+.doc-foot-links {
   display: flex;
-  align-items: center;
+  gap: 8px 18px;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
-.landing .card { max-width: 480px; width: 100%; padding: 44px 36px; text-align: center; }
-.landing h1 { font-size: 30px; margin: 0 0 10px; }
-.landing p.sub { color: var(--ink-soft); margin: 0 0 32px; font-size: 15px; }
-.landing .links { display: flex; flex-direction: column; gap: 12px; }
-.landing a.doc-link {
-  display: block;
-  background: var(--paper-card);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px 20px;
-  text-decoration: none;
-  color: var(--ink);
-  font-size: 16px;
-  font-weight: 600;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-.landing a.doc-link:hover { border-color: var(--pine); background: var(--pine-soft); }
-.landing a.doc-link span {
-  display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 12.5px;
-  font-weight: 400;
+.doc-foot-links a {
   color: var(--ink-soft);
-  margin-top: 4px;
+  text-decoration: none;
+  font-weight: 600;
 }
-.landing footer { margin-top: 36px; }
+.doc-foot-links a:hover {
+  color: var(--brand-700);
+}
+a.back-top {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--brand-600);
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  nav.toc ol {
+    columns: 1;
+  }
+  header.hero {
+    padding: 36px 20px 28px;
+  }
+  .doc-nav {
+    padding: 10px 18px;
+  }
+}

@@ -8,6 +8,7 @@ di hero (`src/components/HeroDevice.jsx`) memakai file di sini.
 | `screen-pencarian.webp` | Pencarian + keyboard (banner warning) — dipakai juga di hero |
 | `screen-kata-diblokir.webp` | Layar "Kata Diblokir" / Kata Kustom |
 | `screen-pengaturan.webp` | Layar "Pengaturan Keyboard" |
+| `screen-mode-orang-tua.webp` | Layar PIN "Mode Orang Tua" |
 
 ## Sudah dinormalisasi
 
