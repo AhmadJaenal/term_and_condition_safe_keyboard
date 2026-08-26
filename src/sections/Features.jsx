@@ -1,6 +1,7 @@
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import FeatureCard from '../components/FeatureCard.jsx'
+import Reveal from '../components/Reveal.jsx'
 import { FEATURES } from '../data/content.js'
 
 export default function Features() {
@@ -18,8 +19,10 @@ export default function Features() {
       />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((f) => (
-          <FeatureCard key={f.title} {...f} />
+        {FEATURES.map((f, i) => (
+          <Reveal key={f.title} delay={(i % 3) * 70} className="h-full">
+            <FeatureCard {...f} />
+          </Reveal>
         ))}
       </div>
     </Section>

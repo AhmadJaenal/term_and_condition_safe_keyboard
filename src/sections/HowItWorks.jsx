@@ -1,6 +1,7 @@
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import StepCard from '../components/StepCard.jsx'
+import TypeGuardDemo from '../components/TypeGuardDemo.jsx'
 import { STEPS } from '../data/content.js'
 
 export default function HowItWorks() {
@@ -22,6 +23,8 @@ export default function HowItWorks() {
           <StepCard key={s.no} {...s} last={i === STEPS.length - 1} />
         ))}
       </div>
+
+      <TypeGuardDemo />
     </Section>
   )
 }

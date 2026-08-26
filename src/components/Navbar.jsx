@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo.jsx'
 import Button from './Button.jsx'
+import HashLink from './HashLink.jsx'
 import Container from './Container.jsx'
 import { NAV_LINKS } from '../data/nav.js'
 import { PLAY_STORE_URL } from '../config.js'
@@ -10,7 +11,7 @@ import { PLAY_STORE_URL } from '../config.js'
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -19,8 +20,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Tutup menu mobile setiap kali pindah halaman
-  useEffect(() => setOpen(false), [pathname])
+  // Tutup menu mobile setiap kali pindah halaman / anchor
+  useEffect(() => setOpen(false), [pathname, hash])
 
   return (
     <header
@@ -33,13 +34,13 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((l) => (
-            <Link
+            <HashLink
               key={l.to}
               to={l.to}
               className="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-brand-50 hover:text-brand-700"
             >
               {l.label}
-            </Link>
+            </HashLink>
           ))}
         </nav>
 
@@ -64,13 +65,14 @@ export default function Navbar() {
         <div className="border-t border-line bg-paper-card lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {NAV_LINKS.map((l) => (
-              <Link
+              <HashLink
                 key={l.to}
                 to={l.to}
+                onClick={() => setOpen(false)}
                 className="rounded-xl px-3 py-2.5 text-sm font-medium text-ink hover:bg-brand-50 hover:text-brand-700"
               >
                 {l.label}
-              </Link>
+              </HashLink>
             ))}
             <Button href={PLAY_STORE_URL} icon="Play" className="mt-2 w-full">
               Unduh Aplikasi

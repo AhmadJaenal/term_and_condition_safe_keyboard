@@ -11,14 +11,24 @@ function ScrollManager() {
 
   useEffect(() => {
     if (hash) {
-      // Tunggu satu frame supaya elemen target sudah ter-render.
+      // Elemen target mungkin belum ter-render (mis. datang dari halaman lain).
+      // Coba beberapa kali sebentar sampai muncul.
       const id = hash.slice(1)
-      requestAnimationFrame(() => {
+      let tries = 0
+      let timer
+      const tryScroll = () => {
         const el = document.getElementById(id)
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        else window.scrollTo(0, 0)
-      })
-      return
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else if (tries++ < 12) {
+          timer = setTimeout(tryScroll, 50)
+        }
+      }
+      const raf = requestAnimationFrame(tryScroll)
+      return () => {
+        cancelAnimationFrame(raf)
+        clearTimeout(timer)
+      }
     }
     window.scrollTo(0, 0)
   }, [pathname, hash])

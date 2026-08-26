@@ -1,14 +1,19 @@
+import { useState } from 'react'
 import { Check } from 'lucide-react'
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import PriceCard from '../components/PriceCard.jsx'
+import DurationToggle from '../components/DurationToggle.jsx'
+import Reveal from '../components/Reveal.jsx'
 import Card from '../components/Card.jsx'
 import Badge from '../components/Badge.jsx'
 import Button from '../components/Button.jsx'
-import { TIERS, LANGUAGE_PACKS, QUOTA_PACKS, QUOTA_NOTE } from '../data/pricing.js'
+import { TIERS, DURATIONS, LANGUAGE_PACKS, QUOTA_PACKS, QUOTA_NOTE } from '../data/pricing.js'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function Pricing() {
+  const [duration, setDuration] = useState('1t')
+
   return (
     <Section id="harga" tone="brand">
       <SectionHeading
@@ -22,10 +27,16 @@ export default function Pricing() {
         desc="Semakin tinggi paket, semakin banyak perlindungan dan kuota kata yang bisa Anda nikmati. Mulai dari Starter gratis, tingkatkan kapan saja tanpa kehilangan data."
       />
 
+      <div className="mt-8 flex justify-center">
+        <DurationToggle value={duration} onChange={setDuration} options={DURATIONS} />
+      </div>
+
       {/* Tier utama */}
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {TIERS.map((tier) => (
-          <PriceCard key={tier.id} tier={tier} />
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {TIERS.map((tier, i) => (
+          <Reveal key={tier.id} delay={(i % 4) * 70} className="h-full">
+            <PriceCard tier={tier} activeDuration={duration} />
+          </Reveal>
         ))}
       </div>
       <p className="mt-5 text-center text-xs text-ink-soft">

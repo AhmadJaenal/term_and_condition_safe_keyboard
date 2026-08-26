@@ -5,12 +5,13 @@ import Button from './Button.jsx'
 import { DURATIONS } from '../data/pricing.js'
 import { PLAY_STORE_URL } from '../config.js'
 
-export default function PriceCard({ tier }) {
+export default function PriceCard({ tier, activeDuration = '1t' }) {
   const { name, icon, free, priceLabel, prices, tagline, features, cta, featured, badge } = tier
+  const durLabel = DURATIONS.find((d) => d.id === activeDuration)?.label ?? ''
 
   return (
     <div
-      className={`relative flex flex-col rounded-3xl border bg-paper-card p-6 shadow-card sm:p-7 ${
+      className={`relative flex h-full flex-col rounded-3xl border bg-paper-card p-6 shadow-card sm:p-7 ${
         featured ? 'border-brand-500 ring-1 ring-brand-500' : 'border-line'
       }`}
     >
@@ -32,14 +33,10 @@ export default function PriceCard({ tier }) {
         {free ? (
           <p className="text-3xl font-extrabold text-brand-600">{priceLabel}</p>
         ) : (
-          <dl className="space-y-1.5">
-            {DURATIONS.map((d) => (
-              <div key={d.id} className="flex items-baseline justify-between text-sm">
-                <dt className="text-ink-soft">{d.label}</dt>
-                <dd className="font-bold text-ink">{prices[d.id]}</dd>
-              </div>
-            ))}
-          </dl>
+          <div key={activeDuration} className="animate-fade-in">
+            <p className="text-3xl font-extrabold text-ink">{prices[activeDuration]}</p>
+            <p className="mt-1 text-xs text-ink-soft">untuk {durLabel} · sekali bayar</p>
+          </div>
         )}
       </div>
 

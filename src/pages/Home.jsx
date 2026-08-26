@@ -5,6 +5,7 @@ import { VALUE_PROPS } from '../data/content.js'
 import Hero from '../sections/Hero.jsx'
 import Risks from '../sections/Risks.jsx'
 import Features from '../sections/Features.jsx'
+import AppShowcase from '../sections/AppShowcase.jsx'
 import HowItWorks from '../sections/HowItWorks.jsx'
 import ProtectionControls from '../sections/ProtectionControls.jsx'
 import NewsFeature from '../sections/NewsFeature.jsx'
@@ -24,6 +25,7 @@ export default function Home() {
       </Container>
       <Risks />
       <Features />
+      <AppShowcase />
       <HowItWorks />
       <ProtectionControls />
       <NewsFeature />

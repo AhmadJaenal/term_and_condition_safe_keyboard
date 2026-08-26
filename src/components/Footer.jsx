@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { Lock } from 'lucide-react'
 import Container from './Container.jsx'
+import HashLink from './HashLink.jsx'
 import { LogoMark } from './Logo.jsx'
 import { VALUE_TAGLINE } from '../data/content.js'
 import { APP_VERSION, COMPANY, LEGAL_LINKS, CONTACT_EMAIL } from '../config.js'
@@ -37,9 +37,9 @@ function FooterLink({ link }) {
   const cls = 'text-sm text-ink-soft transition-colors hover:text-brand-700'
   if (link.to) {
     return (
-      <Link to={link.to} className={cls}>
+      <HashLink to={link.to} className={cls}>
         {link.label}
-      </Link>
+      </HashLink>
     )
   }
   return (

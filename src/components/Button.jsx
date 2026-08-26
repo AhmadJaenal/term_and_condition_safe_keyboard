@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import HashLink from './HashLink.jsx'
 import Icon from './Icon.jsx'
 
 const VARIANTS = {
@@ -38,9 +38,9 @@ export default function Button({
 
   if (to) {
     return (
-      <Link to={to} className={cls} {...rest}>
+      <HashLink to={to} className={cls} {...rest}>
         {inner}
-      </Link>
+      </HashLink>
     )
   }
   if (href) {

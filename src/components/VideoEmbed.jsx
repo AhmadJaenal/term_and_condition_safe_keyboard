@@ -33,9 +33,7 @@ export default function VideoEmbed({ youtubeId, src, poster, title = 'Video Safe
           </span>
           <div>
             <p className="text-sm font-semibold text-white">Video demo akan segera hadir</p>
-            <p className="mt-1 text-xs text-white/60">
-              Pemilik situs dapat menautkan video di komponen <code>VideoEmbed</code>.
-            </p>
+            <p className="mt-1 text-xs text-white/60"></p>
           </div>
         </div>
       )}

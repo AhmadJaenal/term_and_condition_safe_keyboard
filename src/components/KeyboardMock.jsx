@@ -22,7 +22,7 @@ export default function KeyboardMock({
   results = DEFAULT_RESULTS,
 }) {
   return (
-    <div className="flex h-[520px] flex-col bg-[#101312] text-white">
+    <div className="flex h-full flex-col bg-[#101312] text-white">
       {/* Search field */}
       <div className="flex items-center gap-2 px-3 pb-2 pt-11">
         <span className="text-lg leading-none text-white/60">+</span>

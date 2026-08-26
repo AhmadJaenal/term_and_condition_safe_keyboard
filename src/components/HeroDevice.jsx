@@ -1,36 +1,31 @@
 import { useState } from 'react'
-import PhoneMockup from './PhoneMockup.jsx'
+import PhoneFrame from './PhoneFrame.jsx'
 import KeyboardMock from './KeyboardMock.jsx'
 
-export default function HeroDevice({
-  src = '/screenshot-hero.svg',
-  alt = 'Safe Keyboard menghapus kata tidak baik saat mengetik',
-  framed = false,
-}) {
+// Perangkat di hero. Gambar di public/images/screen-*.webp adalah render
+// layar HP lengkap (sudah termasuk bingkai), jadi ditampilkan apa adanya.
+// Bila file gagal dimuat, tampil ilustrasi <KeyboardMock /> berbingkai.
+export default function HeroDevice({ src = '/images/screen-pencarian.webp' }) {
   const [failed, setFailed] = useState(false)
 
-  if (failed || !src) {
-    return (
-      <PhoneMockup>
-        <KeyboardMock />
-      </PhoneMockup>
-    )
-  }
-
-  if (framed) {
-    return (
-      <PhoneMockup screenClassName="min-h-[520px]">
-        <img src={src} alt={alt} className="block w-full" onError={() => setFailed(true)} />
-      </PhoneMockup>
-    )
-  }
-
   return (
-    <img
-      src={src}
-      alt={alt}
-      onError={() => setFailed(true)}
-      className="w-[270px] rounded-[2.25rem] shadow-[0_30px_70px_-20px_rgba(16,32,20,0.45)] sm:w-[300px]"
-    />
+    <div className="relative">
+      <div
+        aria-hidden="true"
+        className="absolute -inset-6 -z-10 rounded-full bg-brand-300/25 blur-3xl"
+      />
+      {failed || !src ? (
+        <div className="w-[270px] sm:w-[300px]">
+          <PhoneFrame fallback={<KeyboardMock />} />
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt="Safe Keyboard menghapus kata tidak baik saat mengetik di kolom pencarian"
+          onError={() => setFailed(true)}
+          className="w-[280px] drop-shadow-[0_30px_70px_rgba(16,32,20,0.4)] sm:w-[310px]"
+        />
+      )}
+    </div>
   )
 }
