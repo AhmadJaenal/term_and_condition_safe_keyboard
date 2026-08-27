@@ -15,7 +15,7 @@ import Faq from '../sections/Faq.jsx'
 import CtaBand from '../sections/CtaBand.jsx'
 
 export default function Home() {
-  useDocumentTitle('Safe Keyboard — Ketik Aman, Tanpa Kata Kasar')
+  useDocumentTitle('Safe Keyboard')
 
   return (
     <>

@@ -200,8 +200,8 @@ Segala sengketa yang timbul sehubungan dengan penggunaan Aplikasi akan diupayaka
 
 Sesuai dengan Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi, berikut adalah identitas pihak yang bertindak sebagai Pengendali Data Pribadi untuk Aplikasi ini:
 
-- **Nama Penanggung Jawab:** Ahmad Jaenal Aripin
-- **Peran:** Pengembang (Developer) sekaligus Pengendali Data Pribadi Aplikasi Safe Keyboard
+- **Nama Penanggung Jawab:** Ahmad Jaenal
+- **Peran:** (Developer & Founder) Aplikasi Safe Keyboard
 - **Email Kontak:** safedotdev@gmail.com
 
 Pengendali Data Pribadi bertanggung jawab menentukan tujuan dan cara pemrosesan Data Pribadi Pengguna sebagaimana diuraikan dalam S&K ini, serta menjadi pihak yang dapat dihubungi Pengguna terkait pelaksanaan hak-haknya atas data pribadi (akses, perbaikan, penghapusan, dan penarikan persetujuan).

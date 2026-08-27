@@ -75,5 +75,5 @@ Update berurutan:
 5. Deploy ulang.
 
 ## Kontak resmi di seluruh dokumen
-- **Penanggung Jawab / Pengendali Data:** Ahmad Jaenal Aripin
+- **Penanggung Jawab / Pengendali Data:** Ahmad Jaenal
 - **Email kontak publik:** safedotdev@gmail.com
