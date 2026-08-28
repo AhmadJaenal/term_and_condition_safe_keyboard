@@ -52,7 +52,7 @@ export default function Contact() {
                 {CONTACT_EMAIL}
               </a>
               <p className="mt-4 text-sm text-white/70">
-                {COMPANY.owner} — {COMPANY.role}.
+                {COMPANY.owner} ({COMPANY.role}).
               </p>
             </div>
 

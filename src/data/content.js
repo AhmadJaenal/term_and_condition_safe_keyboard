@@ -182,7 +182,7 @@ export const FAQ = [
   },
   {
     q: 'Bagaimana kebijakan pengembalian dana (refund)?',
-    a: 'Seluruh transaksi diproses melalui Google Play Billing dan kebijakan refund mengikuti ketentuan Google Play Store. Safe Keyboard tidak memproses refund secara langsung di luar mekanisme Google Play.',
+    a: 'Seluruh transaksi diproses melalui Google Play Billing dan kebijakan refund mengikuti ketentuan Google Play Store. Safe Keyboard tidak memproses refund secara langsung di luar mekanisme Google Play. Jika ingin mengajukan refund, silakan hubungi Safe Dev Teams melalui menu "Bantuan & Masukan" di aplikasi Safe Keyboard. Proses refund akan dilakukan dalam 1–3 hari kerja.',
   },
   {
     q: 'Apakah Safe Keyboard bisa mendeteksi gambar atau video?',
