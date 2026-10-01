@@ -5,14 +5,11 @@ import Home from './pages/Home.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 
-// Kelola posisi scroll saat pindah route / berpindah ke anchor (#id).
 function ScrollManager() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
     if (hash) {
-      // Elemen target mungkin belum ter-render (mis. datang dari halaman lain).
-      // Coba beberapa kali sebentar sampai muncul.
       const id = hash.slice(1)
       let tries = 0
       let timer
