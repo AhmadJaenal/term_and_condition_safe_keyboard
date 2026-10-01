@@ -10,7 +10,6 @@ const AUTOPLAY_MS = 5000
 const reduceMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
-// Render layar HP apa adanya (gambar sudah termasuk bingkai HP).
 function ScreenImage({ src, alt, comingLabel }) {
   const [failed, setFailed] = useState(false)
   if (failed) {
