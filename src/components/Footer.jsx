@@ -2,36 +2,9 @@ import { Lock } from 'lucide-react'
 import Container from './Container.jsx'
 import HashLink from './HashLink.jsx'
 import { LogoMark } from './Logo.jsx'
-import { VALUE_TAGLINE } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
+import { fmt } from '../i18n/format.js'
 import { APP_VERSION, COMPANY, LEGAL_LINKS, CONTACT_EMAIL } from '../config.js'
-
-const COLUMNS = [
-  {
-    title: 'Produk',
-    links: [
-      { label: 'Fitur', to: '/#fitur' },
-      { label: 'Cara Kerja', to: '/#cara-kerja' },
-      { label: 'Video', to: '/#video' },
-      { label: 'Harga', to: '/#harga' },
-      { label: 'FAQ', to: '/#faq' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Kebijakan Privasi', href: LEGAL_LINKS.privacy },
-      { label: 'Syarat & Ketentuan', href: LEGAL_LINKS.terms },
-      { label: 'Permintaan Hapus Akun', href: LEGAL_LINKS.deleteAccount },
-    ],
-  },
-  {
-    title: 'Dukungan',
-    links: [
-      { label: 'Hubungi Kami', to: '/kontak' },
-      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-    ],
-  },
-]
 
 function FooterLink({ link }) {
   const cls = 'text-sm text-ink-soft transition-colors hover:text-brand-700'
@@ -42,14 +15,24 @@ function FooterLink({ link }) {
       </HashLink>
     )
   }
+  const href = link.mailto
+    ? `mailto:${CONTACT_EMAIL}`
+    : link.legal
+      ? LEGAL_LINKS[link.legal]
+      : link.href
+  const label = link.mailto ? CONTACT_EMAIL : link.label
   return (
-    <a href={link.href} className={cls}>
-      {link.label}
+    <a href={href} className={cls}>
+      {label}
     </a>
   )
 }
 
 export default function Footer() {
+  const { t } = useI18n()
+  const columns = t('footer.columns')
+  const tagline = t('valueTagline')
+
   return (
     <footer className="border-t border-line bg-paper-card">
       <Container className="py-14">
@@ -59,17 +42,14 @@ export default function Footer() {
               <LogoMark className="h-9 w-9" />
               <span className="text-lg font-extrabold tracking-tight text-ink">Safe Keyboard</span>
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-              Keyboard Android pintar yang mendeteksi dan menghapus kata kasar, istilah pornografi,
-              dan link judi online dari teks yang diketik sepenuhnya di perangkat Anda (On-Device).
-            </p>
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">{t('footer.desc')}</p>
             <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-700">
               <Lock className="h-4 w-4" />
-              {VALUE_TAGLINE.join(' · ')}
+              {tagline.join(' · ')}
             </div>
           </div>
 
-          {COLUMNS.map((col) => (
+          {columns.map((col) => (
             <div key={col.title} className="flex flex-col gap-3">
               <p className="text-xs font-bold uppercase tracking-wider text-ink-muted">
                 {col.title}
@@ -83,11 +63,13 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {COMPANY.year} {COMPANY.team} · Safe Keyboard v{APP_VERSION}
+            {fmt(t('footer.rights'), {
+              year: COMPANY.year,
+              team: COMPANY.team,
+              version: APP_VERSION,
+            })}
           </p>
-          <p>
-            Penanggung jawab: {COMPANY.owner} · {CONTACT_EMAIL}
-          </p>
+          <p>{fmt(t('footer.responsible'), { owner: COMPANY.owner, email: CONTACT_EMAIL })}</p>
         </div>
       </Container>
     </footer>

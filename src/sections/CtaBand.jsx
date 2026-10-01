@@ -2,10 +2,13 @@ import { Lock } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Button from '../components/Button.jsx'
 import { Ring, Plus } from '../components/Decor.jsx'
-import { VALUE_TAGLINE } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function CtaBand() {
+  const { t } = useI18n()
+  const tagline = t('valueTagline')
+
   return (
     <section className="py-16 sm:py-20">
       <Container>
@@ -15,25 +18,22 @@ export default function CtaBand() {
           <Plus className="right-16 top-10 text-white/40" />
 
           <h2 className="mx-auto max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            Mulai lindungi ketikan keluarga
+            {t('cta.title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-white/85">
-            Unduh Safe Keyboard di Play Store, pilih perlindungan yang sesuai, dan tetap tenang
-            karena semua proses berjalan di perangkat Anda.
-          </p>
+          <p className="mx-auto mt-4 max-w-xl text-base text-white/85">{t('cta.desc')}</p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href={PLAY_STORE_URL} size="lg" variant="dark" icon="Play">
-              Temukan di Play Store
+              {t('cta.primary')}
             </Button>
             <Button to="/kontak" size="lg" variant="outline">
-              Hubungi Kami
+              {t('cta.secondary')}
             </Button>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-2 text-sm font-semibold text-white/90">
             <Lock className="h-4 w-4" />
-            {VALUE_TAGLINE.join(' · ')}
+            {tagline.join(' · ')}
           </div>
         </div>
       </Container>

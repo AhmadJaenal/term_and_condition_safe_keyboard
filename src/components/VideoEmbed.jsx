@@ -1,4 +1,5 @@
 import { Play } from 'lucide-react'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 // ============================================================
 //  BAGIAN VIDEO — diisi oleh pemilik situs
@@ -12,14 +13,16 @@ import { Play } from 'lucide-react'
 //
 //  Selama keduanya kosong, tampil placeholder di bawah ini.
 // ============================================================
-export default function VideoEmbed({ youtubeId, src, poster, title = 'Video Safe Keyboard' }) {
+export default function VideoEmbed({ youtubeId, src, poster, title }) {
+  const { t } = useI18n()
+  const embedTitle = title || t('video.embedTitle')
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-line bg-[#101312] shadow-card">
       {youtubeId ? (
         <iframe
           className="absolute inset-0 h-full w-full"
           src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`}
-          title={title}
+          title={embedTitle}
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -32,7 +35,7 @@ export default function VideoEmbed({ youtubeId, src, poster, title = 'Video Safe
             <Play className="ml-1 h-7 w-7" fill="currentColor" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-white">Video demo akan segera hadir</p>
+            <p className="text-sm font-semibold text-white">{t('video.comingSoon')}</p>
             <p className="mt-1 text-xs text-white/60"></p>
           </div>
         </div>

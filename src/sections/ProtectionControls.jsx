@@ -3,34 +3,36 @@ import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Card from '../components/Card.jsx'
 import Badge from '../components/Badge.jsx'
-import { FILTER_LEVELS, PARENT_LOCKED } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 export default function ProtectionControls() {
+  const { t } = useI18n()
+  const filterLevels = t('controls.filterLevels')
+  const parentLocked = t('controls.parentLocked')
+
   return (
     <Section id="kontrol">
       <SectionHeading
-        eyebrow="Kontrol Perlindungan"
+        eyebrow={t('controls.eyebrow')}
         eyebrowIcon="SlidersHorizontal"
         title={
           <>
-            Atur sendiri <span className="text-brand-600">tingkat proteksinya</span>
+            {t('controls.titleLead')}{' '}
+            <span className="text-brand-600">{t('controls.titleAccent')}</span>
           </>
         }
-        desc="Sesuaikan sensitivitas penyaringan, lalu kunci pengaturan penting dengan PIN agar tidak diubah sembarangan."
+        desc={t('controls.desc')}
       />
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         {/* Level Filter */}
         <Card className="flex flex-col gap-5">
           <div>
-            <h3 className="text-lg font-bold text-ink">Level Filter</h3>
-            <p className="mt-1 text-sm text-ink-soft">
-              Lima tingkat sensitivitas, bekerja otomatis saat mengetik. Semakin tinggi level,
-              semakin ketat penyaringannya.
-            </p>
+            <h3 className="text-lg font-bold text-ink">{t('controls.filterTitle')}</h3>
+            <p className="mt-1 text-sm text-ink-soft">{t('controls.filterDesc')}</p>
           </div>
           <ul className="flex flex-col divide-y divide-line">
-            {FILTER_LEVELS.map((lvl) => (
+            {filterLevels.map((lvl) => (
               <li key={lvl.name} className="flex items-start gap-3 py-3">
                 <span
                   className="mt-1 h-3 w-3 flex-shrink-0 rounded-full"
@@ -54,12 +56,9 @@ export default function ProtectionControls() {
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-amber text-white">
               <Lock className="h-5 w-5" />
             </span>
-            <h3 className="text-lg font-bold text-ink">Mode Orang Tua</h3>
+            <h3 className="text-lg font-bold text-ink">{t('controls.parentTitle')}</h3>
           </div>
-          <p className="text-sm text-ink-soft">
-            Fitur penting hanya bisa diakses dengan PIN yang telah diatur orang tua. PIN disimpan
-            terenkripsi di perangkat, tidak pernah dikirim ke server.
-          </p>
+          <p className="text-sm text-ink-soft">{t('controls.parentDesc')}</p>
 
           <div className="flex justify-center gap-2.5 py-2">
             {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -69,10 +68,10 @@ export default function ProtectionControls() {
 
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-ink-muted">
-              Dikunci dengan PIN
+              {t('controls.lockedLabel')}
             </p>
             <ul className="mt-2 flex flex-wrap gap-2">
-              {PARENT_LOCKED.map((item) => (
+              {parentLocked.map((item) => (
                 <li key={item}>
                   <Badge tone="amber">{item}</Badge>
                 </li>

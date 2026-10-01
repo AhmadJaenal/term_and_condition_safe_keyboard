@@ -1,9 +1,12 @@
+import { useI18n } from '../i18n/LanguageContext.jsx'
+
 // Segmented control untuk memilih durasi langganan pada bagian harga.
 export default function DurationToggle({ value, onChange, options, className = '' }) {
+  const { t } = useI18n()
   return (
     <div
       role="group"
-      aria-label="Pilih durasi langganan"
+      aria-label={t('a11y.durationGroup')}
       className={`inline-flex rounded-full border border-line bg-paper-card p-1 shadow-card ${className}`}
     >
       {options.map((o) => {

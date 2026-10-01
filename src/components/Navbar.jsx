@@ -5,13 +5,16 @@ import Logo from './Logo.jsx'
 import Button from './Button.jsx'
 import HashLink from './HashLink.jsx'
 import Container from './Container.jsx'
-import { NAV_LINKS } from '../data/nav.js'
+import LanguageToggle from './LanguageToggle.jsx'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname, hash } = useLocation()
+  const { t } = useI18n()
+  const navLinks = t('nav.links')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -33,7 +36,7 @@ export default function Navbar() {
         <Logo />
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map((l) => (
+          {navLinks.map((l) => (
             <HashLink
               key={l.to}
               to={l.to}
@@ -44,27 +47,31 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          <LanguageToggle />
           <Button href={PLAY_STORE_URL} icon="Play" size="md">
-            Unduh Aplikasi
+            {t('nav.download')}
           </Button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-brand-50 lg:hidden"
-          aria-label={open ? 'Tutup menu' : 'Buka menu'}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-brand-50"
+            aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </Container>
 
       {open && (
         <div className="border-t border-line bg-paper-card lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {NAV_LINKS.map((l) => (
+            {navLinks.map((l) => (
               <HashLink
                 key={l.to}
                 to={l.to}
@@ -75,7 +82,7 @@ export default function Navbar() {
               </HashLink>
             ))}
             <Button href={PLAY_STORE_URL} icon="Play" className="mt-2 w-full">
-              Unduh Aplikasi
+              {t('nav.download')}
             </Button>
           </Container>
         </div>

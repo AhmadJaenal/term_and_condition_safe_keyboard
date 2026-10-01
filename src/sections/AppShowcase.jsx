@@ -4,21 +4,21 @@ import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
-import { APP_SCREENS } from '../data/screens.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 const AUTOPLAY_MS = 5000
 const reduceMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
 // Render layar HP apa adanya (gambar sudah termasuk bingkai HP).
-function ScreenImage({ src, alt }) {
+function ScreenImage({ src, alt, comingLabel }) {
   const [failed, setFailed] = useState(false)
   if (failed) {
     return (
       <div className="flex h-full w-[240px] flex-col items-center justify-center gap-3 rounded-[2.5rem] border border-dashed border-line bg-paper-card px-6 text-center text-ink-muted">
         <ImageOff className="h-8 w-8" aria-hidden="true" />
         <p className="text-xs font-medium leading-relaxed">
-          Screenshot menyusul
+          {comingLabel}
           <br />
           <span className="opacity-70">{src}</span>
         </p>
@@ -36,11 +36,13 @@ function ScreenImage({ src, alt }) {
 }
 
 export default function AppShowcase() {
+  const { t } = useI18n()
+  const screens = t('showcase.screens')
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const touchX = useRef(null)
-  const count = APP_SCREENS.length
-  const screen = APP_SCREENS[active]
+  const count = screens.length
+  const screen = screens[active]
 
   const go = useCallback((next) => setActive((next + count) % count), [count])
   const pick = (i) => {
@@ -74,14 +76,15 @@ export default function AppShowcase() {
   return (
     <Section id="aplikasi" tone="card">
       <SectionHeading
-        eyebrow="Jelajahi Aplikasi"
+        eyebrow={t('showcase.eyebrow')}
         eyebrowIcon="ScanSearch"
         title={
           <>
-            Lihat langsung <span className="text-brand-600">tampilan aplikasinya</span>
+            {t('showcase.titleLead')}{' '}
+            <span className="text-brand-600">{t('showcase.titleAccent')}</span>
           </>
         }
-        desc="Geser layar atau pilih tab untuk menelusuri halaman utama Safe Keyboard."
+        desc={t('showcase.desc')}
       />
 
       <Reveal className="mt-14">
@@ -93,11 +96,11 @@ export default function AppShowcase() {
           {/* Tab list + detail layar aktif */}
           <div
             role="tablist"
-            aria-label="Layar aplikasi Safe Keyboard"
+            aria-label={t('a11y.appScreensLabel')}
             onKeyDown={onKeyDown}
             className="order-2 flex flex-col gap-2.5 lg:order-1"
           >
-            {APP_SCREENS.map((s, i) => {
+            {screens.map((s, i) => {
               const on = i === active
               return (
                 <button
@@ -172,7 +175,11 @@ export default function AppShowcase() {
                 aria-labelledby={`tab-${screen.id}`}
                 className="flex h-[600px] select-none items-center justify-center motion-safe:animate-slide-in"
               >
-                <ScreenImage src={screen.src} alt={screen.title} />
+                <ScreenImage
+                  src={screen.src}
+                  alt={screen.title}
+                  comingLabel={t('showcase.screenshotComing')}
+                />
               </div>
 
               <button
@@ -181,7 +188,7 @@ export default function AppShowcase() {
                   go(active - 1)
                   setPaused(true)
                 }}
-                aria-label="Layar sebelumnya"
+                aria-label={t('a11y.prevScreen')}
                 className="absolute -left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-paper-card text-ink shadow-card transition hover:border-brand-300 hover:text-brand-700 sm:flex lg:-left-6"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -192,7 +199,7 @@ export default function AppShowcase() {
                   go(active + 1)
                   setPaused(true)
                 }}
-                aria-label="Layar berikutnya"
+                aria-label={t('a11y.nextScreen')}
                 className="absolute -right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-paper-card text-ink shadow-card transition hover:border-brand-300 hover:text-brand-700 sm:flex lg:-right-6"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -200,12 +207,12 @@ export default function AppShowcase() {
             </div>
 
             <div className="flex items-center gap-2">
-              {APP_SCREENS.map((s, i) => (
+              {screens.map((s, i) => (
                 <button
                   key={s.id}
                   type="button"
                   onClick={() => pick(i)}
-                  aria-label={`Tampilkan ${s.tab}`}
+                  aria-label={`${t('a11y.showScreen')} ${s.tab}`}
                   aria-current={i === active}
                   className={`h-2 rounded-full transition-all ${
                     i === active ? 'w-6 bg-brand-500' : 'w-2 bg-brand-200 hover:bg-brand-300'

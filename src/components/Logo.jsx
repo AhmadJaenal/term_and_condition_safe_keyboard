@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 // Lambang perisai + centang + keyboard, mengikuti ikon aplikasi Safe Keyboard.
 // Dipakai sebagai fallback bila file gambar logo belum tersedia.
@@ -57,19 +58,18 @@ export function LogoMark({ className = 'h-9 w-9' }) {
 }
 
 export default function Logo({ withTagline = false, className = '', mark = 'h-9 w-9', to = '/' }) {
+  const { t } = useI18n()
   return (
     <Link
       to={to}
       className={`group inline-flex items-center gap-2.5 ${className}`}
-      aria-label="Safe Keyboard — beranda"
+      aria-label={t('a11y.homeAria')}
     >
       <LogoMark className={mark} />
       <span className="flex flex-col leading-none">
         <span className="text-lg font-extrabold tracking-tight text-ink">Safe Keyboard</span>
         {withTagline && (
-          <span className="mt-1 text-[11px] font-medium text-ink-soft">
-            Ketik Aman, Tanpa Kata Kasar
-          </span>
+          <span className="mt-1 text-[11px] font-medium text-ink-soft">{t('logo.tagline')}</span>
         )}
       </span>
     </Link>

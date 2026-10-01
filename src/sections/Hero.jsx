@@ -4,10 +4,13 @@ import Button from '../components/Button.jsx'
 import Badge from '../components/Badge.jsx'
 import HeroDevice from '../components/HeroDevice.jsx'
 import { Ring, Plus, DashedCurve, DotGrid } from '../components/Decor.jsx'
-import { TRUST_PILLS } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function Hero() {
+  const { t } = useI18n()
+  const trustPills = t('hero.trustPills')
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/70 to-paper pt-10 pb-16 sm:pt-16 lg:pb-24">
       <Ring className="left-[8%] top-24" size={14} />
@@ -18,29 +21,25 @@ export default function Hero() {
 
       <Container className="relative grid items-center gap-12 lg:grid-cols-2">
         <div className="flex flex-col items-start gap-6 animate-fade-up">
-          <Badge icon="ShieldCheck">Keyboard Pintar Anti Kata Kasar</Badge>
+          <Badge icon="ShieldCheck">{t('hero.badge')}</Badge>
 
           <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
-            Dunia digital <span className="text-brand-600">tidak selalu aman</span>
+            {t('hero.titleLead')} <span className="text-brand-600">{t('hero.titleAccent')}</span>
           </h1>
 
-          <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
-            Kata kasar, istilah pornografi, dan link judi online bisa muncul dari chat, pencarian,
-            hingga kolom komentar. Safe Keyboard mendeteksi dan menghapusnya dari teks yang diketik
-            sebelum di proses pada pesan, pencarian atau lainya.
-          </p>
+          <p className="max-w-xl text-lg leading-relaxed text-ink-soft">{t('hero.desc')}</p>
 
           <div className="flex flex-wrap gap-3">
             <Button href={PLAY_STORE_URL} size="lg" icon="Play">
-              Temukan di Play Store
+              {t('hero.ctaPrimary')}
             </Button>
             <Button to="/#cara-kerja" size="lg" variant="outline">
-              Lihat Cara Kerja
+              {t('hero.ctaSecondary')}
             </Button>
           </div>
 
           <ul className="mt-2 flex flex-col gap-2">
-            {TRUST_PILLS.map((p) => (
+            {trustPills.map((p) => (
               <li key={p} className="flex items-center gap-2 text-sm font-medium text-ink-soft">
                 <Check className="h-4 w-4 flex-shrink-0 text-brand-500" strokeWidth={3} />
                 {p}

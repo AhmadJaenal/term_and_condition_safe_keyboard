@@ -1,54 +1,77 @@
 import { useState } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 import Button from './Button.jsx'
+import { useI18n } from '../i18n/LanguageContext.jsx'
+import { fmt } from '../i18n/format.js'
 import { CONTACT_EMAIL } from '../config.js'
 
-const CATEGORIES = [
-  'Pertanyaan umum',
-  'Bantuan langganan & pembayaran',
-  'Laporan bug / masalah teknis',
-  'Permintaan hak atas data pribadi',
-  'Laporan perlindungan anak',
-  'Kerja sama / lainnya',
-]
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
 
 const FIELD =
   'w-full rounded-xl border border-line bg-paper-card px-4 py-2.5 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted focus:border-brand-400 focus:ring-2 focus:ring-brand-100'
 
 export default function ContactForm() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    category: CATEGORIES[0],
-    message: '',
-  })
+  const { t } = useI18n()
+  const c = t('contactForm')
+  const categories = c.categories
+
+  const [form, setForm] = useState({ name: '', email: '', categoryIndex: 0, message: '' })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const name = form.name.trim()
     const email = form.email.trim()
     const message = form.message.trim()
+    const category = categories[form.categoryIndex] ?? categories[0]
 
     if (!name || !email || !message) {
-      setError('Mohon lengkapi nama, email, dan pesan Anda.')
+      setError(c.errRequired)
       return
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Format email tidak valid.')
+      setError(c.errEmail)
+      return
+    }
+    if (!WEB3FORMS_KEY) {
+      setError(fmt(c.errNotConfigured, { email: CONTACT_EMAIL }))
       return
     }
     setError('')
+    setSending(true)
 
-    const subject = `[Safe Keyboard] ${form.category} — ${name}`
-    const body = `Nama: ${name}\nEmail: ${email}\nKategori: ${form.category}\n\n${message}`
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `${c.subjectPrefix} ${category} — ${name}`,
+          from_name: c.fromName,
+          name,
+          email,
+          category,
+          message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSent(true)
+      } else {
+        setError(data.message || c.errGeneric)
+      }
+    } catch {
+      setError(fmt(c.errNetwork, { email: CONTACT_EMAIL }))
+    } finally {
+      setSending(false)
+    }
   }
 
   if (sent) {
@@ -58,14 +81,19 @@ export default function ContactForm() {
           <CheckCircle2 className="h-6 w-6" />
         </span>
         <div>
-          <h3 className="text-lg font-bold text-ink">Aplikasi email Anda sedang dibuka</h3>
+          <h3 className="text-lg font-bold text-ink">{c.successTitle}</h3>
           <p className="mt-1 text-sm text-ink-soft">
-            Pesan sudah disiapkan dan ditujukan ke <strong>{CONTACT_EMAIL}</strong>. Jika aplikasi
-            email tidak terbuka otomatis, silakan kirim manual ke alamat tersebut.
+            {fmt(c.successBody, { email: form.email })}
           </p>
         </div>
-        <Button variant="outline" onClick={() => setSent(false)}>
-          Tulis pesan lagi
+        <Button
+          variant="outline"
+          onClick={() => {
+            setForm({ name: '', email: '', categoryIndex: 0, message: '' })
+            setSent(false)
+          }}
+        >
+          {c.writeAgain}
         </Button>
       </div>
     )
@@ -75,48 +103,52 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
-          Nama
+          {c.name}
           <input
             type="text"
             className={FIELD}
             value={form.name}
             onChange={update('name')}
-            placeholder="Nama lengkap Anda"
+            placeholder={c.namePlaceholder}
             required
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
-          Email
+          {c.email}
           <input
             type="email"
             className={FIELD}
             value={form.email}
             onChange={update('email')}
-            placeholder="nama@email.com"
+            placeholder={c.emailPlaceholder}
             required
           />
         </label>
       </div>
 
       <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
-        Kategori
-        <select className={FIELD} value={form.category} onChange={update('category')}>
-          {CATEGORIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
+        {c.category}
+        <select
+          className={FIELD}
+          value={form.categoryIndex}
+          onChange={(e) => setForm((f) => ({ ...f, categoryIndex: Number(e.target.value) }))}
+        >
+          {categories.map((label, i) => (
+            <option key={label} value={i}>
+              {label}
             </option>
           ))}
         </select>
       </label>
 
       <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
-        Pesan
+        {c.message}
         <textarea
           rows={6}
           className={`${FIELD} resize-y`}
           value={form.message}
           onChange={update('message')}
-          placeholder="Tuliskan pertanyaan atau keluhan Anda selengkap mungkin."
+          placeholder={c.messagePlaceholder}
           required
         />
       </label>
@@ -127,14 +159,16 @@ export default function ContactForm() {
         </p>
       )}
 
-      <Button type="submit" iconRight="Send" className="w-full sm:w-auto">
-        Kirim lewat Email
+      <Button
+        type="submit"
+        iconRight="Send"
+        disabled={sending}
+        className="w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      >
+        {sending ? c.sending : c.submit}
       </Button>
 
-      <p className="text-xs text-ink-muted">
-        Tombol ini membuka aplikasi email Anda dengan pesan yang sudah terisi. Isi form tidak
-        dikirim ke server mana pun.
-      </p>
+      <p className="text-xs text-ink-muted">{c.privacyNote}</p>
     </form>
   )
 }

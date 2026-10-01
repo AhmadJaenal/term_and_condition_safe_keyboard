@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ShieldCheck, Send } from 'lucide-react'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 // Contoh kata untuk simulasi (sengaja ringkas). Aplikasi asli memakai
 // ribuan kata pada Kamus Deteksi + Kata Kustom pengguna.
@@ -20,7 +21,9 @@ const mask = (w) => {
 }
 
 export default function TypeGuardDemo() {
-  const [text, setText] = useState('kamu goblok banget')
+  const { t } = useI18n()
+  const d = t('how.demo')
+  const [text, setText] = useState(d.defaultText)
   const [toast, setToast] = useState(false)
   const prevCount = useRef(-1) // -1: lewati render pertama supaya tak toast saat load
 
@@ -57,10 +60,8 @@ export default function TypeGuardDemo() {
           <ShieldCheck className="h-5 w-5" />
         </span>
         <div>
-          <p className="text-sm font-bold text-ink">Coba sendiri</p>
-          <p className="text-xs text-ink-soft">
-            Ketik kalimat berisi kata kasar, lalu lihat Safe Keyboard menghapusnya.
-          </p>
+          <p className="text-sm font-bold text-ink">{d.title}</p>
+          <p className="text-xs text-ink-soft">{d.subtitle}</p>
         </div>
       </div>
 
@@ -70,8 +71,8 @@ export default function TypeGuardDemo() {
           onChange={(e) => setText(e.target.value)}
           spellCheck={false}
           autoComplete="off"
-          aria-label="Ketik kalimat percobaan"
-          placeholder="Ketik sesuatu…"
+          aria-label={d.inputAria}
+          placeholder={d.inputPlaceholder}
           className="w-full rounded-2xl border border-line bg-paper px-4 py-3 pr-11 text-sm text-ink outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
         />
         <Send className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-500" />
@@ -83,13 +84,13 @@ export default function TypeGuardDemo() {
             <span className="flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] leading-none text-white">
               !
             </span>
-            Kata-kata tidak baik, kami hapus.
+            {d.toast}
           </div>
         )}
       </div>
 
       <div className="rounded-2xl bg-paper p-4">
-        <p className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">Yang diketik</p>
+        <p className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">{d.typedLabel}</p>
         <p className="mt-1.5 min-h-[1.25rem] whitespace-pre-wrap break-words text-sm leading-relaxed text-ink">
           {tokens.map((t, i) =>
             isBad(t) ? (
@@ -110,21 +111,18 @@ export default function TypeGuardDemo() {
         <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600" />
         <div className="min-w-0">
           <p className="text-[11px] font-bold uppercase tracking-wider text-brand-700">
-            Yang diteruskan
+            {d.forwardedLabel}
           </p>
           <p className="mt-1 break-words text-sm text-ink">
-            {sanitized || <span className="text-ink-muted">(kosong)</span>}
+            {sanitized || <span className="text-ink-muted">{d.emptyForwarded}</span>}
           </p>
         </div>
         <span className="ml-auto flex-shrink-0 self-center rounded-full bg-white px-2.5 py-1 text-xs font-bold text-danger-ink ring-1 ring-danger-soft">
-          {blockedCount} diblokir
+          {blockedCount} {d.blockedSuffix}
         </span>
       </div>
 
-      <p className="mt-4 text-center text-[11px] leading-relaxed text-ink-muted">
-        Simulasi ringkas dengan sedikit contoh kata. Aplikasi asli mencocokkan ribuan kata pada Kamus
-        Deteksi ditambah Kata Kustom Anda, sepenuhnya di perangkat.
-      </p>
+      <p className="mt-4 text-center text-[11px] leading-relaxed text-ink-muted">{d.footnote}</p>
     </div>
   )
 }

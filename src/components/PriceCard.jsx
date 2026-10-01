@@ -2,12 +2,14 @@ import { Check } from 'lucide-react'
 import IconTile from './IconTile.jsx'
 import Badge from './Badge.jsx'
 import Button from './Button.jsx'
-import { DURATIONS } from '../data/pricing.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
+import { fmt } from '../i18n/format.js'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function PriceCard({ tier, activeDuration = '1t' }) {
+  const { t } = useI18n()
   const { name, icon, free, priceLabel, prices, tagline, features, cta, featured, badge } = tier
-  const durLabel = DURATIONS.find((d) => d.id === activeDuration)?.label ?? ''
+  const durLabel = t('pricing.durations').find((d) => d.id === activeDuration)?.label ?? ''
 
   return (
     <div
@@ -24,7 +26,7 @@ export default function PriceCard({ tier, activeDuration = '1t' }) {
       )}
 
       <div className="flex items-center gap-3">
-        <IconTile name={icon} tone={featured ? 'brand' : 'brand'} />
+        <IconTile name={icon} tone="brand" />
         <h3 className="text-lg font-bold text-ink">{name}</h3>
       </div>
       {tagline && <p className="mt-2 text-sm text-ink-soft">{tagline}</p>}
@@ -35,7 +37,9 @@ export default function PriceCard({ tier, activeDuration = '1t' }) {
         ) : (
           <div key={activeDuration} className="animate-fade-in">
             <p className="text-3xl font-extrabold text-ink">{prices[activeDuration]}</p>
-            <p className="mt-1 text-xs text-ink-soft">untuk {durLabel} · sekali bayar</p>
+            <p className="mt-1 text-xs text-ink-soft">
+              {fmt(t('pricing.perDuration'), { duration: durLabel })}
+            </p>
           </div>
         )}
       </div>
@@ -49,11 +53,7 @@ export default function PriceCard({ tier, activeDuration = '1t' }) {
         ))}
       </ul>
 
-      <Button
-        href={PLAY_STORE_URL}
-        variant={featured ? 'primary' : 'outline'}
-        className="w-full"
-      >
+      <Button href={PLAY_STORE_URL} variant={featured ? 'primary' : 'outline'} className="w-full">
         {cta}
       </Button>
     </div>

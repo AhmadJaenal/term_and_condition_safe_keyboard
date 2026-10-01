@@ -3,24 +3,26 @@ import SectionHeading from '../components/SectionHeading.jsx'
 import Card from '../components/Card.jsx'
 import IconTile from '../components/IconTile.jsx'
 import Reveal from '../components/Reveal.jsx'
-import { RISKS } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 export default function Risks() {
+  const { t } = useI18n()
+
   return (
     <Section id="risiko" tone="card">
       <SectionHeading
-        eyebrow="Kenapa Ini Penting"
+        eyebrow={t('risks.eyebrow')}
         eyebrowIcon="MessageSquareWarning"
         title={
           <>
-            Risikonya dimulai dari <span className="text-brand-600">kata yang diketik</span>
+            {t('risks.titleLead')} <span className="text-brand-600">{t('risks.titleAccent')}</span>
           </>
         }
-        desc="Paparan digital tidak selalu datang dari layar utama. Sering kali, risikonya dimulai dari kata yang diketik, dicari, atau dikirim setiap hari."
+        desc={t('risks.desc')}
       />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {RISKS.map((r, i) => (
+        {t('risks.items').map((r, i) => (
           <Reveal key={r.title} delay={(i % 4) * 70} className="h-full">
             <Card hover className="flex h-full flex-col gap-4">
               <IconTile name={r.icon} tone={r.tone} size="lg" />

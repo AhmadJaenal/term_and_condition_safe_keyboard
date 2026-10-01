@@ -8,51 +8,54 @@ import Reveal from '../components/Reveal.jsx'
 import Card from '../components/Card.jsx'
 import Badge from '../components/Badge.jsx'
 import Button from '../components/Button.jsx'
-import { TIERS, DURATIONS, LANGUAGE_PACKS, QUOTA_PACKS, QUOTA_NOTE } from '../data/pricing.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 import { PLAY_STORE_URL } from '../config.js'
 
 export default function Pricing() {
+  const { t } = useI18n()
   const [duration, setDuration] = useState('1t')
+  const tiers = t('pricing.tiers')
+  const durations = t('pricing.durations')
+  const langPacks = t('pricing.langPacks')
+  const quotaPacks = t('pricing.quotaPacks')
+  const quotaHead = t('pricing.quotaHead')
 
   return (
     <Section id="harga" tone="brand">
       <SectionHeading
-        eyebrow="Harga"
+        eyebrow={t('pricing.eyebrow')}
         eyebrowIcon="Tag"
         title={
           <>
-            Pilih paket <span className="text-brand-600">sesuai kebutuhan</span>
+            {t('pricing.titleLead')}{' '}
+            <span className="text-brand-600">{t('pricing.titleAccent')}</span>
           </>
         }
-        desc="Semakin tinggi paket, semakin banyak perlindungan dan kuota kata yang bisa Anda nikmati. Mulai dari Starter gratis, tingkatkan kapan saja tanpa kehilangan data."
+        desc={t('pricing.desc')}
       />
 
       <div className="mt-8 flex justify-center">
-        <DurationToggle value={duration} onChange={setDuration} options={DURATIONS} />
+        <DurationToggle value={duration} onChange={setDuration} options={durations} />
       </div>
 
       {/* Tier utama */}
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {TIERS.map((tier, i) => (
+        {tiers.map((tier, i) => (
           <Reveal key={tier.id} delay={(i % 4) * 70} className="h-full">
             <PriceCard tier={tier} activeDuration={duration} />
           </Reveal>
         ))}
       </div>
-      <p className="mt-5 text-center text-xs text-ink-soft">
-        Seluruh harga dalam Rupiah, sekali bayar untuk durasi yang dipilih, tanpa perpanjangan
-        otomatis. Transaksi diproses melalui Google Play Billing.
-      </p>
+      <p className="mt-5 text-center text-xs text-ink-soft">{t('pricing.priceNote')}</p>
 
       {/* Paket bahasa daerah */}
       <div className="mt-20">
-        <h3 className="text-center text-xl font-bold text-ink">Paket Tambahan Bahasa Daerah</h3>
+        <h3 className="text-center text-xl font-bold text-ink">{t('pricing.langPacksTitle')}</h3>
         <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-soft">
-          Beli sekali, gunakan sesuai kebutuhan. Cocok untuk perlindungan bahasa daerah yang lebih
-          spesifik.
+          {t('pricing.langPacksDesc')}
         </p>
         <div className="mx-auto mt-8 grid max-w-3xl gap-6 sm:grid-cols-2">
-          {LANGUAGE_PACKS.map((pack) => (
+          {langPacks.map((pack) => (
             <Card key={pack.id} className="flex flex-col gap-4 text-center">
               {pack.badge && (
                 <Badge tone="brand" icon="Tag" className="mx-auto">
@@ -73,7 +76,7 @@ export default function Pricing() {
                 ))}
               </ul>
               <Button href={PLAY_STORE_URL} variant="outline" className="w-full">
-                Pilih Paket
+                {t('pricing.choosePackage')}
               </Button>
             </Card>
           ))}
@@ -82,24 +85,22 @@ export default function Pricing() {
 
       {/* Paket kuota kata */}
       <div className="mt-20">
-        <h3 className="text-center text-xl font-bold text-ink">
-          Paket Tambahan Kuota Kata Terlarang
-        </h3>
+        <h3 className="text-center text-xl font-bold text-ink">{t('pricing.quotaTitle')}</h3>
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-ink-soft">
-          Pembelian sekali bayar untuk menambah kuota Kata Kustom di luar batas tier utama.
+          {t('pricing.quotaDesc')}
         </p>
 
         <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-3xl border border-line bg-paper-card shadow-card">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-line bg-brand-50 text-xs uppercase tracking-wide text-ink-soft">
-                <th className="px-5 py-3 font-bold">Paket</th>
-                <th className="px-5 py-3 font-bold">Kuota</th>
-                <th className="px-5 py-3 text-right font-bold">Harga</th>
+                <th className="px-5 py-3 font-bold">{quotaHead.package}</th>
+                <th className="px-5 py-3 font-bold">{quotaHead.quota}</th>
+                <th className="px-5 py-3 text-right font-bold">{quotaHead.price}</th>
               </tr>
             </thead>
             <tbody>
-              {QUOTA_PACKS.map((p) => (
+              {quotaPacks.map((p) => (
                 <tr key={p.name} className="border-b border-line last:border-0">
                   <td className="px-5 py-3 font-semibold text-ink">{p.name}</td>
                   <td className="px-5 py-3 text-ink-soft">{p.quota}</td>
@@ -111,7 +112,7 @@ export default function Pricing() {
         </div>
 
         <p className="mx-auto mt-6 max-w-3xl rounded-2xl border border-line bg-paper-card px-5 py-4 text-xs leading-relaxed text-ink-soft">
-          {QUOTA_NOTE}
+          {t('pricing.quotaNote')}
         </p>
       </div>
     </Section>

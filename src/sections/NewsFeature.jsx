@@ -3,24 +3,26 @@ import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Card from '../components/Card.jsx'
 import Badge from '../components/Badge.jsx'
-import { NEWS_SAMPLES, NEWS_NOTE } from '../data/content.js'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 export default function NewsFeature() {
+  const { t } = useI18n()
+
   return (
     <Section id="berita" tone="card">
       <SectionHeading
-        eyebrow="Fitur Berita"
+        eyebrow={t('news.eyebrow')}
         eyebrowIcon="Newspaper"
         title={
           <>
-            Kenali risiko digital <span className="text-brand-600">sejak dini</span>
+            {t('news.titleLead')} <span className="text-brand-600">{t('news.titleAccent')}</span>
           </>
         }
-        desc="Fitur Berita menampilkan kabar seputar keamanan penggunaan gadget (seperti anak di bawah umur yang membuat grup untuk membahas hal-hal dewasa) agar orang tua bisa waspada lebih awal."
+        desc={t('news.desc')}
       />
 
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
-        {NEWS_SAMPLES.map((n) => (
+        {t('news.samples').map((n) => (
           <Card key={n.title} hover className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
@@ -35,7 +37,7 @@ export default function NewsFeature() {
       </div>
 
       <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-line bg-paper px-5 py-4 text-center text-xs leading-relaxed text-ink-soft">
-        {NEWS_NOTE}
+        {t('news.note')}
       </p>
     </Section>
   )

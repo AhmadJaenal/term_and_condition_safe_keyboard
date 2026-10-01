@@ -1,19 +1,22 @@
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import VideoEmbed from '../components/VideoEmbed.jsx'
+import { useI18n } from '../i18n/LanguageContext.jsx'
 
 export default function VideoSection() {
+  const { t } = useI18n()
+
   return (
     <Section id="video">
       <SectionHeading
-        eyebrow="Lihat Langsung"
+        eyebrow={t('video.eyebrow')}
         eyebrowIcon="Play"
         title={
           <>
-            Safe Keyboard <span className="text-brand-600">bekerja</span>
+            {t('video.titleLead')} <span className="text-brand-600">{t('video.titleAccent')}</span>
           </>
         }
-        desc="Tonton bagaimana kata berisiko dikenali dan dihapus otomatis, sejak diketik hingga sebelum terkirim."
+        desc={t('video.desc')}
       />
 
       <div className="mx-auto mt-12 max-w-4xl">
