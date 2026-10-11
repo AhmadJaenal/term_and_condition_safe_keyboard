@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ImageOff } from 'lucide-react'
+import ShimmerImage from './ShimmerImage.jsx'
 
 const WIDTHS = {
   sm: 'w-[210px] sm:w-[230px]',
@@ -32,11 +33,13 @@ export default function PhoneFrame({
     >
       <div className="relative aspect-[376/792] overflow-hidden rounded-[2.15rem] bg-[#101312]">
         {showImg ? (
-          <img
+          <ShimmerImage
             src={src}
             alt={alt}
             loading={loading}
             onError={() => setFailed(true)}
+            wrapperClassName="absolute inset-0"
+            shimmerClassName="rounded-none"
             className={`absolute inset-0 h-full w-full object-cover object-top ${imgClassName}`}
           />
         ) : fallback ? (

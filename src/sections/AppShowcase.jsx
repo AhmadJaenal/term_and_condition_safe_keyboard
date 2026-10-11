@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Check, ImageOff } from 'lucide-react'
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal from '../components/Reveal.jsx'
+import ShimmerImage from '../components/ShimmerImage.jsx'
 import Icon from '../components/Icon.jsx'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
@@ -25,11 +26,13 @@ function ScreenImage({ src, alt, comingLabel }) {
     )
   }
   return (
-    <img
+    <ShimmerImage
       src={src}
       alt={alt}
       onError={() => setFailed(true)}
-      className="block h-full w-auto max-w-full drop-shadow-[0_34px_64px_rgba(11,26,15,0.26)]"
+      wrapperClassName="h-full max-w-full aspect-[1/2]"
+      shimmerClassName="rounded-[2.5rem]"
+      className="block h-full w-full drop-shadow-[0_34px_64px_rgba(11,26,15,0.26)]"
     />
   )
 }

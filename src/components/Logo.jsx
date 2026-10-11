@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import ShimmerImage from './ShimmerImage.jsx'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
 // Lambang perisai + centang + keyboard, mengikuti ikon aplikasi Safe Keyboard.
@@ -48,10 +49,12 @@ export function LogoMark({ className = 'h-9 w-9' }) {
   const [failed, setFailed] = useState(false)
   if (failed) return <LogoGlyph className={className} />
   return (
-    <img
+    <ShimmerImage
       src="/logo-mark.png"
       alt="Safe Keyboard"
-      className={className}
+      wrapperClassName={`shrink-0 ${className}`}
+      shimmerClassName="rounded-lg"
+      className="h-full w-full"
       onError={() => setFailed(true)}
     />
   )

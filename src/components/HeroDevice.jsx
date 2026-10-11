@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PhoneFrame from './PhoneFrame.jsx'
+import ShimmerImage from './ShimmerImage.jsx'
 import KeyboardMock from './KeyboardMock.jsx'
 import { useI18n } from '../i18n/LanguageContext.jsx'
 
@@ -21,11 +22,13 @@ export default function HeroDevice({ src = '/images/screen-pencarian.webp' }) {
           <PhoneFrame fallback={<KeyboardMock />} />
         </div>
       ) : (
-        <img
+        <ShimmerImage
           src={src}
           alt={t('hero.deviceAlt')}
           onError={() => setFailed(true)}
-          className="w-[280px] drop-shadow-[0_30px_70px_rgba(16,32,20,0.4)] sm:w-[310px]"
+          wrapperClassName="aspect-[1/2] w-[280px] sm:w-[310px]"
+          shimmerClassName="rounded-[2.5rem]"
+          className="h-full w-full drop-shadow-[0_30px_70px_rgba(16,32,20,0.4)]"
         />
       )}
     </div>
